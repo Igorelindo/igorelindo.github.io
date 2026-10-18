@@ -1,434 +1,793 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Igo Relindo | Data Analyst Portfolio</title>
-  <meta name="description" content="Data analyst portfolio of Igo Relindo: six case studies in SQL, Python, Power BI and Tableau, from framing a business problem to delivering a dashboard.">
-  <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="Igo Relindo | Data Analyst Portfolio">
-  <meta property="og:description" content="Six case studies from problem framing to dashboard, built with SQL, Python, Power BI and Tableau.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Igo Relindo — Data Analyst</title>
+<meta name="description" content="Igo Relindo — Data Analyst portfolio: SQL, Python, Power BI, Tableau case studies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b; --bg2:#111113; --card:#17171b; --card2:#1d1d22;
+  --line:rgba(255,255,255,.08); --text:#f5f2e9; --muted:#a9a497;
+  --y1:#FFE066; --y2:#FFC300; --y3:#FF9F00;
+  --grad:linear-gradient(135deg,#FFE066 0%,#FFC300 45%,#FF9F00 100%);
+  --glow:rgba(255,195,0,.22); --nav:rgba(10,10,11,.72);
+  --shadow:0 20px 50px rgba(0,0,0,.45);
+}
+:root[data-theme="light"]{
+  --bg:#fffbf2; --bg2:#fff4d9; --card:#ffffff; --card2:#fffaf0;
+  --line:rgba(0,0,0,.08); --text:#17140c; --muted:#6b6352;
+  --glow:rgba(255,176,0,.25); --nav:rgba(255,251,242,.8);
+  --shadow:0 20px 45px rgba(120,90,0,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+.container{width:min(1140px,100% - 32px);margin-inline:auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* progress bar */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:200;box-shadow:0 0 12px var(--y2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-size:1.45rem;display:flex;align-items:center;gap:6px;letter-spacing:.3px}
+.logo .ch{display:inline-block;animation:wave 2.4s ease-in-out infinite;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo .hand{display:inline-block;transform-origin:70% 70%;animation:handwave 2.4s ease-in-out infinite}
+@keyframes wave{0%,40%,100%{transform:translateY(0)}20%{transform:translateY(-7px)}}
+@keyframes handwave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.menu{display:flex;align-items:center;gap:30px;list-style:none}
+.menu a{font-weight:500;font-size:.95rem;position:relative;padding:4px 0;transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--grad);transition:width .3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.menu a.active{color:var(--y2)}
+.toggle{width:62px;height:32px;border-radius:30px;border:none;cursor:pointer;background:var(--grad);position:relative;flex-shrink:0}
+.toggle span{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#0a0a0b;display:grid;place-items:center;transition:transform .35s cubic-bezier(.6,-0.3,.4,1.4)}
+.toggle svg{width:15px;height:15px;color:var(--y2)}
+:root[data-theme="light"] .toggle span{transform:translateX(30px);background:#fff}
+.burger{display:none;background:none;border:none;color:var(--text);cursor:pointer}
+.burger svg{width:28px;height:28px}
+.nav-right{display:flex;align-items:center;gap:22px}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none;animation:drift 14s ease-in-out infinite alternate}
+.b1{width:480px;height:480px;background:radial-gradient(circle,#FFC300,transparent 70%);top:8%;left:-6%}
+.b2{width:380px;height:380px;background:radial-gradient(circle,#FF9F00,transparent 70%);bottom:-8%;right:5%;animation-delay:-5s;opacity:.35}
+.b3{width:260px;height:260px;background:radial-gradient(circle,#FFE066,transparent 70%);top:30%;left:52%;animation-delay:-9s;opacity:.25}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,-40px) scale(1.15)}}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);opacity:.6}
+.hero-in{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center;position:relative;z-index:2}
+.photo-wrap{position:relative;width:min(360px,80vw);aspect-ratio:1;margin-inline:auto}
+.ring{position:absolute;inset:-14px;border-radius:50%;background:conic-gradient(from 0deg,#FFE066,#FF9F00,transparent 40%,#FFC300 70%,#FFE066);animation:spin 8s linear infinite;filter:drop-shadow(0 0 22px var(--glow))}
+.ring::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--bg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:4px solid var(--y2);background:linear-gradient(145deg,#1d1d22,#0a0a0b);display:grid;place-items:center;z-index:1}
+.photo img{width:100%;height:100%;object-fit:cover}
+.initials{font-size:6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.shape{position:absolute;z-index:3;animation:float 6s ease-in-out infinite}
+.s1{width:46px;height:46px;border-radius:50%;background:var(--grad);top:-4%;right:4%}
+.s2{width:26px;height:26px;background:#FFE066;opacity:.7;top:8%;left:-6%;transform:rotate(20deg);animation-delay:-2s}
+.s3{width:34px;height:34px;border-radius:50%;border:3px solid var(--y2);bottom:2%;left:0;animation-delay:-4s}
+.s4{width:20px;height:20px;background:#FF9F00;bottom:14%;right:-6%;animation-delay:-1s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-18px) rotate(25deg)}}
+.hello{font-family:'Caveat',cursive;font-size:clamp(3rem,7vw,5.4rem);line-height:1.05;font-weight:700;min-height:1.1em}
+.hello .nm{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cursor{display:inline-block;width:4px;height:.85em;background:var(--y2);margin-left:6px;vertical-align:-.08em;animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.role{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:600;margin:14px 0 18px;min-height:1.6em}
+.role .typed2{color:var(--y2)}
+.role .cursor{width:3px;height:1em}
+.lead{color:var(--muted);font-size:1.03rem;max-width:560px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:40px;font-weight:600;font-size:.98rem;transition:transform .3s,box-shadow .3s}
+.btn-p{background:var(--grad);color:#111;box-shadow:0 10px 30px var(--glow)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px var(--glow)}
+.btn-o{border:2px solid var(--y2);color:var(--text)}
+.btn-o:hover{background:rgba(255,195,0,.1);transform:translateY(-3px)}
+.mouse{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:26px;height:42px;border:2px solid var(--muted);border-radius:14px;z-index:2}
+.mouse::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--y2);animation:scroll 1.6s infinite}
+@keyframes scroll{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+/* SECTIONS */
+section{padding:100px 0;position:relative}
+.alt{background:var(--bg2)}
+.alt::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--y2),transparent);opacity:.5}
+.head{text-align:center;margin-bottom:56px}
+.head h2{font-size:clamp(2.1rem,4.5vw,3.2rem);font-weight:800;line-height:1.2}
+.head .bar{width:90px;height:4px;border-radius:4px;background:var(--grad);margin:16px auto 18px}
+.head p{color:var(--muted);font-size:1.05rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;transition:transform .35s,border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,195,0,.45);box-shadow:var(--shadow)}
+
+/* ABOUT */
+.about-text{max-width:900px;margin:0 auto 46px;font-size:1.08rem;text-align:justify;color:var(--text);opacity:.92}
+.about-text b{color:var(--y2);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{text-align:center;padding:26px 18px}
+.stat .n{font-size:2rem;font-weight:800}
+.stat .l{color:var(--muted);font-size:.9rem}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.values h4{font-size:1.08rem;margin-bottom:6px}
+.values p{color:var(--muted);font-size:.93rem}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--grad);display:grid;place-items:center;margin-bottom:16px;color:#111}
+.ico svg{width:24px;height:24px}
+
+/* EDUCATION */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.edu-top{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.badge{width:58px;height:58px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:800;color:#111;flex-shrink:0;font-size:1.05rem}
+.edu h3{font-size:1.3rem;line-height:1.3}
+.edu .deg{color:var(--y2);font-weight:600;margin-bottom:10px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:30px;background:var(--card2);border:1px solid var(--line);font-size:.86rem;margin-bottom:14px}
+.pill svg{width:15px;height:15px;color:var(--y2)}
+.edu ul{padding-left:18px;color:var(--muted);font-size:.93rem}
+.edu ul li::marker{color:var(--y2)}
+.sub{text-align:center;font-size:1.7rem;font-weight:700;margin:70px 0 30px}
+.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cert{text-align:center;padding:28px 18px}
+.cert .badge{margin:0 auto 14px;width:62px;height:62px}
+.cert h4{font-size:1rem;line-height:1.35;margin-bottom:4px}
+.cert .is{color:var(--muted);font-size:.86rem;margin-bottom:12px}
+.yr{display:inline-block;padding:3px 14px;border-radius:20px;background:rgba(255,195,0,.15);color:var(--y2);font-weight:600;font-size:.85rem}
+
+/* EXPERIENCE */
+.timeline{position:relative;max-width:980px;margin:0 auto;padding-left:44px}
+.timeline::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(var(--y1),var(--y3),transparent)}
+.job{margin-bottom:30px;position:relative}
+.job::before{content:"";position:absolute;left:-41px;top:34px;width:20px;height:20px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 6px var(--bg),0 0 18px var(--y2)}
+.alt .job::before{box-shadow:0 0 0 6px var(--bg2),0 0 18px var(--y2)}
+.job-h{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.job h3{font-size:1.3rem;line-height:1.35}
+.job .co{color:var(--muted);font-size:.93rem;margin-bottom:14px}
+.job ul{padding-left:20px}
+.job li{margin-bottom:8px;font-size:.96rem}
+.job li::marker{color:var(--y2)}
+.job li b{color:var(--y2);font-weight:600}
+.ach{font-size:1.02rem;margin:18px 0 10px;color:var(--y2)}
+
+/* PROJECTS */
+.featured{display:grid;grid-template-columns:1.05fr 1fr;gap:0;padding:0;margin-bottom:34px}
+.featured .cover{min-height:100%;border-radius:0}
+.f-body{padding:36px}
+.tagline{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;background:var(--grad);color:#111;margin-bottom:14px}
+.f-body h3{font-size:1.65rem;line-height:1.3;margin-bottom:12px}
+.f-body p{color:var(--muted);margin-bottom:16px}
+.kpis{display:flex;gap:26px;margin:6px 0 18px;flex-wrap:wrap}
+.kpi .v{font-size:1.6rem;font-weight:800}
+.kpi .k{font-size:.8rem;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.proj{padding:0;display:flex;flex-direction:column}
+.cover{height:220px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;
+  background:radial-gradient(circle at 85% 15%,rgba(255,195,0,.55),transparent 45%),radial-gradient(circle at 10% 110%,rgba(255,159,0,.45),transparent 50%),linear-gradient(135deg,#141414,#0a0a0b)}
+.cover::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.cover .bars{position:absolute;right:24px;bottom:24px;display:flex;align-items:flex-end;gap:7px;height:110px;opacity:.9}
+.cover .bars i{display:block;width:14px;border-radius:4px 4px 0 0;background:var(--grad);transform-origin:bottom;animation:grow 2.8s ease-in-out infinite alternate}
+.cover .bars i:nth-child(2){animation-delay:-.6s}.cover .bars i:nth-child(3){animation-delay:-1.2s}.cover .bars i:nth-child(4){animation-delay:-1.8s}.cover .bars i:nth-child(5){animation-delay:-2.4s}
+@keyframes grow{0%{transform:scaleY(.55)}100%{transform:scaleY(1)}}
+.cover .num{position:absolute;top:14px;left:22px;font-size:4.4rem;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,195,0,.55)}
+.cover .ct{position:relative;color:#fff;font-weight:700;font-size:1.2rem;line-height:1.3;max-width:68%}
+.cover .cc{position:relative;color:var(--y1);font-size:.8rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.p-body{padding:26px 28px 24px;display:flex;flex-direction:column;flex:1}
+.p-body h3{font-size:1.22rem;line-height:1.35;margin-bottom:10px}
+.p-body p{color:var(--muted);font-size:.94rem;margin-bottom:16px;flex:1}
+.p-body p b{color:var(--y2)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tags span{font-size:.78rem;font-weight:600;padding:3px 11px;border-radius:7px;background:rgba(255,195,0,.13);color:var(--y2);border:1px solid rgba(255,195,0,.25)}
+.links{display:flex;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.links a{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;color:var(--y2);transition:gap .3s}
+.links a:hover{gap:11px}
+.links svg{width:16px;height:16px}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(7,1fr);gap:18px}
+.skill{text-align:center;padding:18px 8px;border-radius:18px;transition:transform .35s}
+.skill .logo-ico{width:64px;height:64px;margin:0 auto 14px;color:var(--muted);transition:color .35s,transform .35s,filter .35s}
+.skill .logo-ico svg{width:100%;height:100%}
+.skill:hover{transform:translateY(-6px)}
+.skill:hover .logo-ico{color:var(--y2);transform:scale(1.08);filter:drop-shadow(0 0 14px var(--glow))}
+.skill h4{font-size:1rem;font-weight:500;color:var(--text)}
+.soft{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.soft span{padding:12px 24px;border-radius:40px;background:var(--card);border:1px solid var(--line);font-weight:500;transition:all .3s}
+.soft span:hover{border-color:var(--y2);color:var(--y2);transform:translateY(-3px)}
+
+/* FOOTER */
+footer{background:#050505;color:#f5f2e9;padding:70px 0 30px;position:relative}
+:root[data-theme="light"] footer{background:#17140c}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:46px}
+footer h3{font-size:1.6rem;margin-bottom:20px}
+.ci{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:1.05rem}
+.ci svg{width:22px;height:22px;color:#FFC300;flex-shrink:0}
+.ci a:hover{color:#FFC300}
+.soc{display:flex;gap:12px;margin-bottom:16px}
+.soc a{width:48px;height:48px;border-radius:50%;background:#1b1b1f;display:grid;place-items:center;transition:all .3s}
+.soc a:hover{background:var(--grad);color:#111;transform:translateY(-4px)}
+.soc svg{width:22px;height:22px}
+footer .muted{color:#a9a497}
+.copy{text-align:center;color:#a9a497;font-size:.92rem}
+.top-btn{display:inline-block;margin-top:14px;padding:8px 22px;border-radius:30px;background:var(--grad);color:#111;font-weight:600;font-size:.9rem}
+
+
+/* PROJECT DETAIL */
+.p-cover-click{cursor:pointer;display:block}
+.featured .p-cover-click{height:100%}
+#detail{min-height:100vh;padding-bottom:80px}
+.d-bar{position:sticky;top:0;z-index:50;background:var(--nav);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.d-bar-in{display:flex;justify-content:space-between;align-items:center;height:72px;gap:12px}
+.back{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--y2);transition:gap .3s}
+.back:hover{gap:12px}.back svg{width:20px;height:20px}
+.d-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.d-actions a{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:12px;font-weight:600;font-size:.9rem;transition:transform .3s}
+.d-actions a:hover{transform:translateY(-2px)}
+.d-actions a.pri{background:var(--grad);color:#111}
+.d-actions a.sec{border:1.5px solid var(--y2);color:var(--y2)}
+.d-actions svg{width:16px;height:16px}
+.d-wrap{padding-top:44px}
+.d-cat{text-align:center;color:var(--y2);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.85rem;margin-bottom:8px}
+.d-title{text-align:center;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.3;font-weight:800;max-width:960px;margin:0 auto 44px}
+.d-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:34px;align-items:start}
+.d-left{display:flex;flex-direction:column;gap:28px}
+.d-img{border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.d-img img{display:block;width:100%;height:auto}
+.d-img .cover{height:320px;border-radius:0}
+.ph{aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;
+  background:repeating-linear-gradient(45deg,rgba(255,195,0,.04) 0 12px,transparent 12px 24px),var(--card);border:2px dashed rgba(255,195,0,.45);border-radius:22px;color:var(--muted)}
+.ph svg{width:54px;height:54px;color:var(--y2);margin-bottom:4px}
+.ph b{color:var(--text);font-size:1.05rem}
+.ph code{color:var(--y2);font-size:.9rem}
+.d-img:has(.ph){border:none;box-shadow:none}
+.d-info h3{font-size:1.25rem;margin-bottom:18px}
+.d-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;font-size:1rem}
+.d-row svg{width:20px;height:20px;color:var(--y2);flex-shrink:0}
+.disc{margin-top:16px;color:var(--muted);font-style:italic;font-size:.88rem;line-height:1.6}
+.d-oh{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin-bottom:22px}
+.d-oh svg{width:24px;height:24px;color:var(--y2)}
+.blk{background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--y2);border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.blk:last-child{margin-bottom:0}
+.blk h4{font-size:1.15rem;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.blk p,.blk li{font-size:.97rem;line-height:1.7}
+.blk ul{padding-left:20px}
+.blk li{margin-bottom:7px}
+.blk li::marker{color:var(--y2)}
+.blk b{color:var(--y2);font-weight:600}
+body.detail-open #main,body.detail-open nav{display:none}
+@media (max-width:980px){.d-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.d-bar-in{height:auto;padding:12px 0;flex-wrap:wrap}.d-actions{width:100%;justify-content:flex-start}.d-actions a{padding:8px 12px;font-size:.82rem}.back{font-size:.95rem;white-space:nowrap}.blk{padding:16px}.d-wrap{padding-top:28px}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr;text-align:center;gap:50px;padding:40px 0 90px}
+  .lead{margin-inline:auto}.cta{justify-content:center}
+  .stats,.certs{grid-template-columns:repeat(2,1fr)}
+  .values,.edu,.featured,.projects{grid-template-columns:1fr}
+  .featured .cover{height:240px}
+  .skills{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:820px){
+  .burger{display:block}
+  .menu{position:fixed;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .4s}
+  .menu.open{max-height:400px}
+  .menu li{width:100%;text-align:center}
+  .menu a{display:block;padding:14px}
+  .menu a::after{display:none}
+}
+@media (max-width:560px){
+  section{padding:76px 0}
+  .skills{grid-template-columns:repeat(3,1fr);gap:10px}
+  .skill .logo-ico{width:48px;height:48px}.skill h4{font-size:.88rem}
+  .certs{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .timeline{padding-left:34px}.job::before{left:-31px}.timeline::before{left:7px}
+  .card{padding:24px}.f-body{padding:26px}
+  .about-text{text-align:left}
+  .logo{font-size:1.2rem}
+  .photo-wrap{width:240px}.initials{font-size:4.2rem}
+  .hero-in{gap:36px;padding:30px 0 90px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
-<body id="top">
-  <a class="skip" href="#main">Skip to content</a>
+<body>
+<div id="progress"></div>
+<div id="main">
 
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="#top">Igo Relindo</a>
-      <nav aria-label="Main">
-        <ul>
-          <li><a href="#case-study">Case study</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<!-- NAV -->
+<nav>
+  <div class="container nav-in">
+    <a href="#home" class="logo" aria-label="Back to top" id="logo"></a>
+    <div class="nav-right">
+      <ul class="menu" id="menu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Work Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+      <button class="toggle" id="toggle" aria-label="Toggle light/dark mode"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="tIcon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main id="main">
-
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div>
-          <h1 id="hero-title">I check that a drop is real before I explain it.</h1>
-          <p class="lede">I'm Igo Relindo, a data analyst based in Bandar Lampung. I work in automotive after-sales, where I monitor KPIs and build the dashboards and models my team uses. I'm finishing RevoU's Full-Stack Data Analytics programme and looking for a Data Analyst role.</p>
-          <div class="actions">
-            <a class="button solid" href="#case-study">Read the capstone case study</a>
-            <a class="button" href="mailto:igorelindo87@gmail.com">Email me</a>
-          </div>
-        </div>
-
-        <figure class="chart-figure">
-          <svg id="winrate-chart" role="img" aria-labelledby="chart-title chart-desc">
-            <title id="chart-title">Win rate of closed deals by close month, 2017</title>
-            <desc id="chart-desc">Bar chart. March 82%, April 49%, May 54%, June 83%, July 49%, August 57%, September 79%, October 49%, November 53%, December 78%. The last month of every quarter wins 78 to 83%, every other month 49 to 57%.</desc>
-          </svg>
-          <figcaption><strong>The win rate follows the calendar.</strong> Bars show win rate of closed deals by close month. Dashed lines and the figures underneath show the quarterly rate that was reported to management. Source: my capstone analysis of 8,800 CRM opportunities.</figcaption>
-        </figure>
+<!-- HERO -->
+<section id="home">
+  <div class="grid-bg"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="container hero-in">
+    <div class="photo-wrap">
+      <div class="ring"></div>
+      <div class="photo">
+        <!-- Ganti photo.jpg dengan foto Anda (taruh di folder yang sama dengan index.html) -->
+        <img src="photo.jpg" alt="Igo Relindo" onerror="this.remove();document.getElementById('ini').style.display='block'">
+        <span class="initials" id="ini" style="display:none">IR</span>
       </div>
-    </section>
-
-    <!-- Featured case study -->
-    <section class="band tint" id="case-study" aria-labelledby="case-title">
-      <div class="wrap case-grid">
-        <div>
-          <h2 id="case-title">The win-rate drop that never happened</h2>
-          <p>Management saw win rate fall from <strong>82.1% to 60.3%</strong> during 2017 and was weighing extra headcount. I analysed 8,800 CRM opportunities to find the cause.</p>
-          <p>There was no drop. No deal in the data closes before 1 March 2017, so the first "quarter" in the report held a single strong month. Every last month of a quarter wins 78 to 83% of its deals. Every other month wins 49 to 57%. Measured by full quarter, the business is steady at about 61%.</p>
-          <p>The real opportunity is the mid-quarter gap. Lifting months one and two from 52% to 65% takes overall win rate to 69.8%, worth about <strong>USD 1.26M</strong> over three quarters, with no new hires.</p>
-          <p>I started with three hypotheses from an issue tree. Re-testing them on equal periods showed two of my own first conclusions were artifacts of the same reading error, so I dropped them and tested timing instead.</p>
-          <ul class="links">
-            <li><a href="https://app.powerbi.com/view?r=eyJrIjoiYjUzMDQyZmUtMGQyOS00Njk0LWEzMjMtNzJlMzJiNjIyYTU4IiwidCI6ImE0ZWJlNDI1LTQ5MjUtNDhlZi05OGViLWUxMWRiNWQ4NDI3ZSIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener">Open the Power BI dashboard</a></li>
-            <li><a href="https://drive.google.com/file/d/14uFagsaBlPlWRaQmS7qLks6-09P3OE3U/view" target="_blank" rel="noopener">View the presentation deck</a></li>
-            <li><a href="https://colab.research.google.com/drive/1gxBMiP_uaJWWRgaJmUB0CO9v-VhFUN7x?usp=sharing" target="_blank" rel="noopener">Open the Python notebook</a></li>
-          </ul>
-          <p class="caveat">What could make these numbers wrong: only 10 months of closes exist, the USD 1.26M assumes flat closed-deal volume and a USD 2,393 average won deal, and the data cannot say why losses cluster early. The company, Vantage Hardware Co., is fictional and built around a public dataset, so this is a method exercise.</p>
-        </div>
-
-        <table class="facts">
-          <caption>Four hypotheses, tested on equal periods</caption>
-          <tbody>
-            <tr>
-              <th scope="row">Capacity</th>
-              <td>Workload and win rate are unrelated across 104 agent-quarters (r = -0.06).</td>
-              <td class="verdict-no">Not supported</td>
-            </tr>
-            <tr>
-              <th scope="row">Speed</th>
-              <td>Inside the same month, fast and slow deals differ by at most 4 points.</td>
-              <td class="verdict-no">Not supported</td>
-            </tr>
-            <tr>
-              <th scope="row">Customer mix</th>
-              <td>Client revenue and headcount are flat. Every sector wins 61 to 65%.</td>
-              <td class="verdict-no">Not supported</td>
-            </tr>
-            <tr>
-              <th scope="row">Timing</th>
-              <td>49%, 55% and 80% in months 1, 2 and 3 of every quarter, in every region and manager.</td>
-              <td class="verdict-yes">Supported</td>
-            </tr>
-          </tbody>
-        </table>
+      <span class="shape s1"></span><span class="shape s2"></span><span class="shape s3"></span><span class="shape s4"></span>
+    </div>
+    <div>
+      <h1 class="hello"><span id="typed1"></span><span class="cursor" id="c1"></span></h1>
+      <div class="role"><span id="typed2" class="typed2"></span><span class="cursor" id="c2" style="display:none"></span></div>
+      <p class="lead">I turn operational data into decisions — monitoring KPIs, analysing performance, and building the dashboards and models that management acts on.</p>
+      <div class="cta">
+        <a href="#projects" class="btn btn-p">View Projects
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#contact" class="btn btn-o">Get in Touch</a>
       </div>
-    </section>
+    </div>
+  </div>
+  <a href="#about" class="mouse" aria-label="Scroll down"></a>
+</section>
 
-    <!-- Projects -->
-    <section class="band" id="projects" aria-labelledby="projects-title">
-      <div class="wrap">
-        <h2 id="projects-title">Five projects, built in order</h2>
-        <p class="band-intro">Each project adds a skill: framing the problem, testing it, querying it, cleaning and segmenting it, then presenting it. Open a row for the question, the method and the result.</p>
+<!-- ABOUT -->
+<section id="about" class="alt">
+  <div class="container">
+    <div class="head reveal"><h2>About <span class="grad-text">Me</span></h2><div class="bar"></div></div>
+    <p class="about-text reveal" style="margin-bottom:0">Hi, I'm Igo! I work in <b>after-sales service operations in the automotive industry</b>, where my job is to help a network of service outlets reach their targets — with data. I monitor KPIs, work out which outlets need attention and why, and coach outlet managers with the numbers in hand. I studied Geophysical Engineering, where analysing field data was the core of the work, and carried that habit into operations, building my own Power BI dashboards and Excel models along the way. I'm now completing the <b>Full-Stack Data Analytics programme at RevoU</b> to put a formal foundation under that experience, and I'm looking for a <b>Data Analyst</b> role.</p>
 
-        <div class="projects">
+  </div>
+</section>
 
-          <details class="project" id="project-1">
-            <summary>
-              <span class="project-num">1</span>
-              <span>
-                <span class="project-title">Structured Business Analysis: Corporate Segment Profit Decline</span>
-                <span class="project-finding">Company sales grew 20.4% while Corporate profit fell 13.6%. I framed the problem before touching any data.</span>
-              </span>
-              <span class="project-tools">Issue trees, SMART, DARCI</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="project-body">
-              <dl>
-                <dt>The question</dt>
-                <dd>How can RevoShion restore Corporate segment profit growth to at least +10% year on year within two quarters, without reversing the segment's sales growth?</dd>
-                <dt>What I did</dt>
-                <dd>Mapped stakeholders with DARCI, wrote a SMART problem statement, built an issue tree for margin compression and cost-to-serve, and turned each branch into a prioritised hypothesis with the metrics that would prove it.</dd>
-                <dt>What I recommended</dt>
-                <dd>Set a discount limit with manager approval beyond it, reward more profitable order patterns among the largest accounts, revisit pricing on low-margin bundles, renegotiate shipping, and review segment profit monthly.</dd>
-                <dt>Context</dt>
-                <dd>Understanding Business Process assignment, RevoU, July 2026. RevoShion is a fictional retailer and no data processing was required.</dd>
-              </dl>
-              <ul class="links">
-                <li><a href="https://docs.google.com/presentation/d/1q8_rZY95xOq-wyh_4BtiXmdzp3XR6arsubQ4ffBDtic/edit" target="_blank" rel="noopener">View the presentation</a></li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project" id="project-2">
-            <summary>
-              <span class="project-num">2</span>
-              <span>
-                <span class="project-title">TokoBli Campaign Evaluation: Statistics and A/B Testing</span>
-                <span class="project-finding">The campaign with the most revenue was not the most efficient, and a new product page lifts transaction value 11.3%.</span>
-              </span>
-              <span class="project-tools">Excel, statistics, A/B test</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="project-body">
-              <dl>
-                <dt>The question</dt>
-                <dd>How can TokoBli increase total revenue in its next twin-date campaign, based on how its 2023 campaigns performed?</dd>
-                <dt>What I did</dt>
-                <dd>Cleaned 10,159 transactions to 10,142, removed 12 revenue outliers with the IQR method, compared the 10/10, 11/11 and 12/12 campaigns by revenue and by revenue per rupiah of discount, then ran a two-sample t-test on the old and new product page.</dd>
-                <dt>What I found</dt>
-                <dd>
-                  <ul>
-                    <li>11/11 brought the most revenue (Rp 16.62 billion). 12/12 was the most efficient, earning 58.5 per Rp 1 of discount with the smallest budget.</li>
-                    <li>Mean transaction value was Rp 830,460 on the new page against Rp 746,103 on the old one, with p below 0.0001.</li>
-                  </ul>
-                </dd>
-                <dt>What I recommended</dt>
-                <dd>Roll out the new page before the next campaign, use 12/12 as the efficiency benchmark, and keep Men's Fashion on minimal discount.</dd>
-              </dl>
-              <ul class="links">
-                <li><a href="https://docs.google.com/presentation/d/1bTD8QjNG0cS6g7KrJ0Vy_PY5WmQD8Seh5noeJ4Pa4Y0/edit" target="_blank" rel="noopener">View the presentation</a></li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project" id="project-3">
-            <summary>
-              <span class="project-num">3</span>
-              <span>
-                <span class="project-title">RevoGrocers Sales Performance: 9 Business Questions in SQL</span>
-                <span class="project-finding">The top categories win on volume, not price. Loyalty is already high everywhere, so the lever is spend per customer.</span>
-              </span>
-              <span class="project-tools">BigQuery SQL, CTEs, window functions</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="project-body">
-              <dl>
-                <dt>The question</dt>
-                <dd>Which categories drive revenue, how do price and buyers relate, and where can the business grow?</dd>
-                <dt>What I did</dt>
-                <dd>Validated a 7-table grocery database first, then answered nine questions with JOINs, CTEs and window functions. Revenue was calculated the same way throughout: quantity × price × (1 − discount).</dd>
-                <dt>What I found</dt>
-                <dd>
-                  <ul>
-                    <li>Confections leads on volume without being the most expensive per unit.</li>
-                    <li>Grain has the highest unit price (61.43) and the lowest volume, a possible price barrier.</li>
-                    <li>Repeat purchase rates sit between 93.68% and 99.85% in every category.</li>
-                  </ul>
-                </dd>
-                <dt>What I recommended</dt>
-                <dd>Protect stock and promotions for the top four categories, test a Grain bundle, cross-sell to lift spend per customer, and build a reward programme that spreads loyalty beyond a few heavy spenders.</dd>
-              </dl>
-              <ul class="links">
-                <li><a href="https://docs.google.com/presentation/d/1zzNC8bXSfEVNN55tyrj2ntvJjGFTYdJD-7iuMQUlUbM/edit?usp=sharing" target="_blank" rel="noopener">View the presentation</a></li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project" id="project-4">
-            <summary>
-              <span class="project-num">4</span>
-              <span>
-                <span class="project-title">RevoBank Customer Segmentation: Cleaning, EDA and RFM in Python</span>
-                <span class="project-finding">42% of customers drive only 2.4% of revenue, while a fifth of the base drives nearly half of it.</span>
-              </span>
-              <span class="project-tools">Python, pandas, RFM</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="project-body">
-              <dl>
-                <dt>The question</dt>
-                <dd>How can a bank get existing credit-card customers to transact more?</dd>
-                <dt>What I did</dt>
-                <dd>Cleaned six months of card and user data (5,531 usable cards out of 5,599), measured profit and fraud, then segmented 1,938 customers with RFM. I chose RFM over K-Means because each segment comes with a clear action.</dd>
-                <dt>What I found</dt>
-                <dd>
-                  <ul>
-                    <li>Net profit was Rp 5.64 billion over six months. Fraud was 0.263% of volume yet consumed about 17.6% of gross profit.</li>
-                    <li>Growth-ready customers are 20.8% of the base and 44.7% of revenue. The inactive group is 42.1% of customers and 2.4% of revenue.</li>
-                  </ul>
-                </dd>
-                <dt>What I recommended</dt>
-                <dd>Upsell the 260 growth-ready clients, win back the 227 at-risk customers one to one, and use a low-cost automated nudge for the inactive group instead of a big re-acquisition push.</dd>
-              </dl>
-              <ul class="links">
-                <li><a href="https://colab.research.google.com/drive/1H88hse6GKrycn0HTWDZLgcHeXJKcdYG6?usp=sharing" target="_blank" rel="noopener">Open the Python notebook</a></li>
-                <li><a href="https://docs.google.com/presentation/d/1uD3S4rjBCF3oR2XugfUoZDDaCl8LRBzs/edit?usp=sharing" target="_blank" rel="noopener">View the presentation</a></li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="project" id="project-5">
-            <summary>
-              <span class="project-num">5</span>
-              <span>
-                <span class="project-title">Revo Hospital Financial Performance Dashboard</span>
-                <span class="project-finding">A Tableau dashboard that located Rp 14.5 billion of pending revenue by department and patient type.</span>
-              </span>
-              <span class="project-tools">Tableau, LOD expressions</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="project-body">
-              <dl>
-                <dt>Who it is for</dt>
-                <dd>The Finance Lead of a hospital network, who opens it monthly to decide where billing follow-up should go. It leads with three KPIs, then narrows down.</dd>
-                <dt>What I did</dt>
-                <dd>Modelled five related tables with Tableau relationships instead of joins, joined on patient ID because 1,470 of 1,800 patients share a name, and chose each chart for the question it answers.</dd>
-                <dt>What I found</dt>
-                <dd>
-                  <ul>
-                    <li>14% of net revenue is still pending.</li>
-                    <li>Cardiology collects 81.7%, the lowest of eight departments. Self-pay patients collect 64.6% against 87 to 90% for insured patients.</li>
-                    <li>Admissions rose from 1,146 in 2024 to 3,854 in 2025, and pending revenue climbed with them.</li>
-                  </ul>
-                </dd>
-                <dt>What I recommended</dt>
-                <dd>Review Cardiology billing, require a deposit for self-pay admissions, grow billing capacity with volume, and offer instalments above Rp 20 million. Whether the same patients drive all three problems still needs a combined cross-tab.</dd>
-              </dl>
-              <ul class="links">
-                <li><a href="https://public.tableau.com/views/DATAVIZ_JUN26_Igo_Relindo_Intermediate/Dashboard1" target="_blank" rel="noopener">Open the Tableau dashboard</a></li>
-                <li><a href="https://drive.google.com/file/d/1Ehe0HD16nd9rekmN5rKQ4ZM8Y2-UbYiF/view" target="_blank" rel="noopener">View the presentation</a></li>
-              </ul>
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Analytics at work -->
-    <section class="band tint" aria-labelledby="work-title">
-      <div class="wrap work-grid">
-        <div>
-          <h2 id="work-title">Analytics at work</h2>
-          <p>A Power BI management dashboard I built for a service outlet network in my current role. It runs on internal company data, so the report is not published here.</p>
-        </div>
-        <div>
-          <h3>Network performance dashboard in Power BI</h3>
-          <ul class="plain-list">
-            <li>Star schema data model with a fact table for service transactions and dimensions for outlet, area and date, so every measure filters consistently.</li>
-            <li>DAX measures for month-to-date volume, achievement against target, month-over-month growth and each area's share of the network total.</li>
-            <li>A refreshable pipeline from Google Sheets through Power Query.</li>
-            <li>Fixed three problems on the way: relationship errors in the model, regional number and date formats read wrongly, and empty source columns that broke refreshes.</li>
-            <li>Management now reviews one consistent view of the network, with drill-down from area to individual outlet.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="band" id="about" aria-labelledby="about-title">
-      <div class="wrap two-col">
-        <div>
-          <h2 id="about-title">About me</h2>
-          <p>I work in after-sales service operations in the automotive industry, where my job is to help a network of service outlets reach their targets. I do that with data: monitoring KPIs, working out which outlets need attention and why, and coaching outlet managers with the numbers in hand.</p>
-          <p>I studied Geophysical Engineering, where analysing field data was the core of the work, and I carried that habit into operations. I built the tools I needed myself, from Power BI dashboards and Excel models to Python scripts. I'm now completing the Full-Stack Data Analytics programme at RevoU to put a formal foundation under that experience.</p>
-        </div>
-        <ul class="principles">
-          <li><strong>Check the premise before the cause.</strong>In my capstone, the declining win rate I was asked to explain was not declining at all.</li>
-          <li><strong>Use methods I can explain.</strong>If I cannot walk a stakeholder through how a number was produced, it does not go in the deck.</li>
-          <li><strong>End with something to do.</strong>Each recommendation gets an owner, a timeline and a KPI.</li>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="head reveal"><h2><span class="grad-text">Education</span></h2><div class="bar"></div><p>Academic background and certifications.</p></div>
+    <div class="edu">
+      <div class="card reveal">
+        <div class="edu-top"><div class="badge">UNILA</div><h3>University of Lampung</h3></div>
+        <div class="deg">Bachelor's Degree in Geophysical Engineering</div>
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2016 – 2021</div>
+        <ul>
+          <li>Publication presenter, Joint Convention Yogyakarta (2019) — geophysical data analysis</li>
+          <li>Assistant Lecturer, Geothermal Exploration (2020)</li>
+          <li>Top 10 finalist, IUGC Geoposter Competition by ITB (2018) · PPA Scholarship (2018)</li>
         </ul>
       </div>
-    </section>
+      <div class="card reveal">
+        <div class="edu-top"><div class="badge">RevoU</div><h3>RevoU</h3></div>
+        <div class="deg">Full-Stack Data Analytics Program</div>
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>June 2026 – Oct 2026</div>
+        <ul>
+          <li>Business problem framing, statistics &amp; hypothesis testing</li>
+          <li>SQL on BigQuery (CTEs, window functions, cohort analysis), Python (pandas)</li>
+          <li>Dashboarding in Tableau &amp; Power BI, data storytelling, end-to-end capstone (DEEPP)</li>
+        </ul>
+      </div>
+    </div>
 
-    <!-- Experience and education -->
-    <section class="band tint" id="experience" aria-labelledby="exp-title">
-      <div class="wrap two-col">
-        <div>
-          <h2 id="exp-title">Experience</h2>
-          <div class="entry">
-            <h3>Service Engineer Supervisor and Data and Business Performance Analyst</h3>
-            <p class="when">Automotive main dealer, Lampung, Indonesia · 2022 to present</p>
-            <ul class="plain-list">
-              <li>Analyse operational and business data across a network of service workshops to find trends, performance gaps and improvement opportunities.</li>
-              <li>Track business KPIs and give management the insight behind the numbers.</li>
-              <li>Build structured reporting and dashboards, including a Power BI management dashboard.</li>
-              <li>Support early-warning monitoring that flags workshops whose performance signals risk before it shows in results.</li>
-              <li>Prepare multi-source data with KNIME and Excel and audit data quality in submitted records.</li>
-              <li>Present analysis to management and translate it into recommendations people can act on.</li>
-              <li>Selected for the company's Leadership Development Program, Batch 11.</li>
-            </ul>
-          </div>
-          <div class="entry">
-            <h3>Assistant Lecturer, Geothermal Exploration</h3>
-            <p class="when">University of Lampung · 2020</p>
-            <p>Supported academic practicum and analytical evaluation activities during my degree.</p>
-          </div>
+    <h3 class="sub reveal">Certifications</h3>
+    <div class="certs">
+      <div class="card cert reveal"><div class="badge">BI</div><h4>Power BI Training</h4><div class="is">Tunas Group</div><span class="yr">2024</span></div>
+      <div class="card cert reveal"><div class="badge">DS</div><h4>Applied Data Science &amp; Business</h4><div class="is">Astra Honda Motor</div><span class="yr">2023</span></div>
+      <div class="card cert reveal"><div class="badge">KN</div><h4>Data Analytics with KNIME</h4><div class="is">Iykra</div><span class="yr">2022</span></div>
+      <div class="card cert reveal"><div class="badge">Py</div><h4>Big Data Using Python</h4><div class="is">Kominfo</div><span class="yr">2021</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="alt">
+  <div class="container">
+    <div class="head reveal"><h2>Work <span class="grad-text">Experience</span></h2><div class="bar"></div><p>Professional experience and key contributions.</p></div>
+    <div class="timeline">
+      <div class="card job reveal">
+        <div class="job-h"><h3>Service Engineer Supervisor<br><span class="grad-text" style="font-size:1rem">Data &amp; Business Performance Analyst</span></h3>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2022 – Present</div></div>
+        <div class="co">PT. Tunas Dwipa Matra</div>
+        <ul>
+          <li>Analyze operational and business performance data across workshop networks to identify trends, performance gaps, and improvement opportunities.</li>
+          <li>Monitor key business KPIs and provide analytical insights to support operational effectiveness and management decision-making.</li>
+          <li>Develop structured reporting systems and data visualization dashboards to improve business visibility and reporting efficiency.</li>
+          <li>Support business sustainability initiatives through operational monitoring, performance evaluation, and early warning analysis.</li>
+          <li>Collaborate with cross-functional teams in operational improvement, network development, and digital engagement initiatives.</li>
+          <li>Evaluate customer engagement and application utilization trends to support service improvement and KPI achievement.</li>
+          <li>Transform complex operational data into structured reports and actionable business recommendations for stakeholders and management teams.</li>
+          <li>Presented analytical findings and operational evaluations to management teams to support strategic business decisions.</li>
+        </ul>
+        <h4 class="ach">Key Achievements</h4>
+        <ul>
+          <li>Improved reporting efficiency and operational visibility through dashboard development and structured analytical reporting initiatives.</li>
+          <li>Supported implementation of business sustainability monitoring as an early warning system for operational performance evaluation.</li>
+          <li>Contributed to productivity and operational improvement initiatives through KPI analysis and data-driven evaluation.</li>
+          <li>Assisted cross-functional business initiatives through operational analysis and performance monitoring.</li>
+          <li>Supported management decision-making by providing actionable insights and business performance evaluations.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="head reveal"><h2><span class="grad-text">Projects</span></h2><div class="bar"></div><p>Selected projects demonstrating practical application of data analytics to generate actionable insights.</p></div>
+    <div id="featured"></div>
+    <div class="projects" id="projGrid"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt">
+  <div class="container">
+    <div class="head reveal"><h2>Technical <span class="grad-text">Skills</span></h2><div class="bar"></div></div>
+    <div class="skills">
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></div><h4>Python</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div><h4>SQL</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.654.174V2.377H9.682v.58h1.972V5.16h.696V2.957h1.97v-.58h-1.97V.174h-.348zm6.03 2.262l-.002 1.623v1.623h-2.957v.927h2.957v3.188H18.725l.011-1.582.02-1.576 1.465-.02 1.46-.01v-.927H18.728V2.436h-.522zm-12.407.06V5.686H2.291v.925H5.277V9.801h.985V6.61h3.013v-.925H6.262V2.496H5.77zm6.086 5.27v3.593H8.06v1.188h3.304v3.596h1.28v-3.596H15.953v-1.188H12.643V7.766h-.637zm9.721 1.55v2.221h-2.012v.811h2.012v2.261h.887v-2.261H24v-.811h-2.029V9.317h-.422zm-19.111.131V11.621H0v.621H1.973v2.194H2.64v-2.194h2v-.62H2.609V9.446h-.318zm15.709 4.516v3.254h-3.016v.927h3.016v3.217h1.072v-3.216H21.74v-.928H18.754v-3.254h-.533zm-12.463.008v3.246H2.262v.928h2.957v3.189H6.32v-3.189h2.955v-.928H6.32V13.97h-.55zm6.316 4.578l.002 1.103v1.1H9.566v.812h1.971v2.262h.928l.012-1.119.017-1.143H14.463v-.812h-2V18.549h-.465z"/></svg></div><h4>Tableau</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="5" height="9" rx="1.2" opacity=".55"/><rect x="9.5" y="7.5" width="5" height="14.5" rx="1.2" opacity=".78"/><rect x="16" y="2" width="5" height="20" rx="1.2"/></svg></div><h4>Power BI</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="13" height="18" rx="1.5" fill="currentColor" opacity=".45"/><path d="M14 7h5M14 11h5M14 15h5" stroke="var(--card)" stroke-width="1.4"/><rect x="2" y="6" width="12" height="12" rx="1.5" fill="currentColor"/><path d="M5 9l5 6M10 9l-5 6" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg></div><h4>Excel</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg></div><h4>Google Sheets</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m10.445 21.393 11.54-.775.451.775zM7.56 11.113l-5.092 10.28h-.904Zm10.427 2.652-6.43-9.505.452-.775zm2.57 5.216.627.896-10.652.707zM4.655 20.976l-1.143.09 4.709-9.488Zm6.173-14.667.476-.998 5.984 8.782zm8.272 11.055.847 1.015-8.685 1.413zM6.76 20.532l-1.32.224 3.11-8.162Zm3.406-12.189.472-1.207 5.558 6.732Zm7.403 7.54 1.13 1.016-6.378 1.98zm-8.759 4.08-1.46.448 1.46-6.44zm.8-9.539.363-1.48 4.868 4.477zm-.348 9.402v-7.851l.244-1.085 6.864 3.926.834.758L10.34 19.5zM12.01 1.694 0 22.306h24z"/></svg></div><h4>KNIME</h4></div>
+    </div>
+    <h3 class="sub reveal">Soft Skills</h3>
+    <div class="soft reveal">
+      <span>Root Cause Analysis</span><span>Analytical Thinking</span><span>Problem Solving</span><span>Time Management &amp; Prioritization</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <h3>Get In <span class="grad-text">Touch</span></h3>
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:igorelindo87@gmail.com">igorelindo87@gmail.com</a></div>
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bandar Lampung, Indonesia</div>
+      </div>
+      <div>
+        <h3>Connect <span class="grad-text">With Me</span></h3>
+        <div class="soc">
+          <a href="https://www.linkedin.com/in/igo-r-928939170/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="mailto:igorelindo87@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></a>
         </div>
+        <p class="muted">Open to Data Analyst opportunities — happy to walk through any project in this portfolio.</p>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Igo Relindo. All rights reserved.<br><a href="#home" class="top-btn">Back to Top</a></div>
+  </div>
+</footer>
 
-        <div>
-          <h2>Education and training</h2>
-          <div class="entry">
-            <h3>RevoU, Full-Stack Data Analytics</h3>
-            <p class="when">June 2026 batch · capstone submitted October 2026</p>
-            <p>Business understanding, statistics, SQL on BigQuery, Python for analysis, data visualisation in Tableau and Power BI, data communication, and an end-to-end capstone.</p>
-          </div>
-          <div class="entry">
-            <h3>University of Lampung, Geophysical Engineering</h3>
-            <p class="when">Aug 2016 to Jun 2021 · GPA 3.35 / 4.0</p>
-            <ul class="plain-list">
-              <li>Presenter at the Joint Convention Yogyakarta, 2019</li>
-              <li>PPA Scholarship awardee, 2018</li>
-              <li>Top 10 finalist, IUGC Geoposter Competition by ITB, 2018</li>
-            </ul>
-          </div>
-          <div class="entry">
-            <h3>Courses and certifications</h3>
-            <table class="certs">
-              <tbody>
-                <tr><th scope="row">Power BI Training</th><td>Tunas Group</td><td>2024</td></tr>
-                <tr><th scope="row">Applied Data Science and Business</th><td>Astra Honda Motor</td><td>2023</td></tr>
-                <tr><th scope="row">Data Analytics with KNIME</th><td>Iykra</td><td>2022</td></tr>
-                <tr><th scope="row">Big Data Using Python</th><td>Kominfo</td><td>2021</td></tr>
-              </tbody>
-            </table>
-          </div>
+</div><!-- /main -->
+
+<!-- PROJECT DETAIL VIEW -->
+<div id="detail" hidden>
+  <div class="d-bar"><div class="container d-bar-in">
+    <a href="#projects" class="back" data-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back to Projects</a>
+    <div class="d-actions" id="dActions"></div>
+  </div></div>
+  <div class="container d-wrap">
+    <div class="d-cat" id="dCat"></div>
+    <h1 class="d-title" id="dTitle"></h1>
+    <div class="d-grid">
+      <div class="d-left">
+        <div class="d-img" id="dImg"></div>
+        <div class="card d-info">
+          <h3>Project Details</h3>
+          <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><b>Period:</b> <span id="dPeriod"></span></span></div>
+          <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>Team:</b> <span id="dTeam"></span></span></div>
+          <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg><span><b>Tools:</b> <span id="dTools"></span></span></div>
+          <p class="disc" id="dDisc"></p>
         </div>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="band" id="skills" aria-labelledby="skills-title">
-      <div class="wrap">
-        <h2 id="skills-title">Skills and tools</h2>
-        <table class="skills">
-          <tbody>
-            <tr>
-              <th scope="row">SQL</th>
-              <td>BigQuery: JOINs, CTEs, subqueries, window functions (RANK, LAG, LEAD, running totals), cohort analysis</td>
-              <td>RevoGrocers sales analysis</td>
-            </tr>
-            <tr>
-              <th scope="row">Python</th>
-              <td>pandas, numpy, matplotlib: data cleaning, EDA, RFM segmentation</td>
-              <td>Capstone, RevoBank segmentation</td>
-            </tr>
-            <tr>
-              <th scope="row">Business intelligence</th>
-              <td>Power BI: star schema modelling, DAX, Power Query. Tableau: relationships, LOD expressions, table calculations, maps</td>
-              <td>Capstone, network dashboard, hospital dashboard</td>
-            </tr>
-            <tr>
-              <th scope="row">Spreadsheets</th>
-              <td>Excel (VBA, Power Query, pivot tables, lookup models), Google Sheets</td>
-              <td>Revenue simulation model, programme review dashboards</td>
-            </tr>
-            <tr>
-              <th scope="row">Data preparation</th>
-              <td>KNIME: multi-file joins and matrix outputs</td>
-              <td>Customer movement analysis across 229 sub-districts</td>
-            </tr>
-            <tr>
-              <th scope="row">Methods</th>
-              <td>Root cause analysis with issue trees, descriptive statistics, two-sample t-tests, RFM segmentation, cohort and funnel analysis, Balanced Scorecard, IQR outlier review, impact sizing</td>
-              <td>Across all projects</td>
-            </tr>
-            <tr>
-              <th scope="row">Communication</th>
-              <td>Storyboarding with the Pyramid Principle, decluttering charts so one message stands out, presenting to non-technical stakeholders</td>
-              <td>Every deck above</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card d-over">
+        <h3 class="d-oh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>Project Overview</h3>
+        <div class="blk"><h4>Background</h4><div id="dBg"></div></div>
+        <div class="blk"><h4>Objective</h4><div id="dObj"></div></div>
+        <div class="blk"><h4>Method</h4><div id="dMethod"></div></div>
+        <div class="blk"><h4>Result</h4><div id="dResult"></div></div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
 
-    <!-- Contact -->
-    <section class="band contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap">
-        <h2 id="contact-title">Let's talk</h2>
-        <p>I'm open to Data Analyst opportunities. Email is the fastest way to reach me.</p>
-        <div class="actions">
-          <a class="button solid" href="mailto:igorelindo87@gmail.com">igorelindo87@gmail.com</a>
-          <a class="button" href="https://www.linkedin.com/in/igo-r-928939170/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-    </section>
+<script>
+/* ---------- PROJECT DATA (edit here) ----------
+   img     : screenshot file for the detail page, e.g. "images/deepp.png" (falls back to a generated cover if missing)
+   period  : shown under Project Details
+   links   : buttons on the detail page (first one is highlighted)
+*/
+const DISC_REVOU = "*Disclaimer: This project is part of the RevoU Full-Stack Data Analytics programme. The company and dataset are fictional or public, used to practise solving business problems end to end — from framing the question to delivering actionable insights.";
+const ICO = {
+  slides:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>',
+  dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M8 17V9M13 17V5M18 17v-6"/></svg>',
+  code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+};
+const projects = [
+  { id:"deepp", featured:true, cat:"Capstone · DEEPP",
+    title:"The Win-Rate Drop That Never Happened — B2B Sales Pipeline Analysis",
+    short:"Management saw win rate fall from 82% to 60% and was weighing extra headcount. I analysed 8,800 CRM opportunities and showed the drop was a reading error — fixing the real pattern is worth about $1.26M without growing the team.",
+    kpis:[["8,800","CRM opportunities"],["$1.26M","Opportunity sized"],["0","Extra headcount needed"]],
+    tags:["Python","Power BI","Google Sheets","Hypothesis Testing"],
+    tools:"Python (pandas, matplotlib), Power BI (DAX), Google Sheets",
+    period:"Aug – Oct 2026", team:"Individual", img:"images/deepp.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://drive.google.com/file/d/14uFagsaBlPlWRaQmS7qLks6-09P3OE3U/view",ico:"slides"},
+           {label:"Dashboard",url:"https://app.powerbi.com/view?r=eyJrIjoiYjUzMDQyZmUtMGQyOS00Njk0LWEzMjMtNzJlMzJiNjIyYTU4IiwidCI6ImE0ZWJlNDI1LTQ5MjUtNDhlZi05OGViLWUxMWRiNWQ4NDI3ZSIsImMiOjEwfQ%3D%3D",ico:"dash"},
+           {label:"Notebook",url:"https://colab.research.google.com/drive/1gxBMiP_uaJWWRgaJmUB0CO9v-VhFUN7x?usp=sharing",ico:"code"}],
+    background:"Vantage Hardware Co., a B2B computer hardware seller with 30 sales agents across 3 regions, saw its quarterly win rate fall from <b>82.1% to 60.3%</b> during 2017. Management was considering adding headcount and wanted to know the cause first.",
+    objective:"Lift win rate from about 61% to at least <b>70% within two quarters</b> without growing the 30-person sales team — and before that, confirm whether the decline is real.",
+    method:[
+      "<b>Data cleaning:</b> prepared 8,800 opportunities across 4 tables in Python — date casting, typo standardisation, flagging unknown accounts, and reviewing IQR outliers.",
+      "<b>Hypothesis testing:</b> built an issue tree and tested four hypotheses (capacity, speed, customer mix, timing) using equal, full-period comparisons.",
+      "<b>Dashboarding:</b> built a Power BI dashboard with drill-down from region to manager to agent so every number can be checked.",
+      "<b>Prioritisation:</b> ranked recommendations by impact, with an owner and a timeline for each."],
+    result:[
+      "<b>No real decline:</b> the first “quarter” held only March. Measured by full quarter, win rate is steady at about 61%.",
+      "<b>Timing pattern:</b> the last month of every quarter wins 78–83%, other months only 49–57% — in every region and for every manager.",
+      "<b>Capacity, speed and customer mix</b> were not supported once re-tested on equal periods.",
+      "<b>Recommendations:</b> report win rate by full quarter, close the mid-quarter gap (to 69.8% win rate, about <b>+$1.26M</b> over three quarters), clean the stale open pipeline, and tier products by revenue."] },
 
-  </main>
+  { id:"ubp", cat:"Business Understanding",
+    title:"Structured Business Analysis: Corporate Segment Profit Decline",
+    short:"Framed a <b>13.6% profit decline</b> with stakeholder mapping, a SMART problem statement, an issue tree and prioritised hypotheses.",
+    tags:["Issue Tree","DARCI","SMART","Hypothesis"],
+    tools:"Google Slides (issue tree, DARCI, SMART, OBIPR)",
+    period:"Jul 2026", team:"Individual", img:"images/ubp.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1q8_rZY95xOq-wyh_4BtiXmdzp3XR6arsubQ4ffBDtic/edit",ico:"slides"}],
+    background:"RevoShion's total sales grew <b>20.4%</b> year on year, yet profit in its Corporate segment fell <b>13.6%</b>. Rising sales with falling profit signals margin erosion that could spread to the rest of the business.",
+    objective:"Restore Corporate segment profit growth to <b>at least +10% year on year within two quarters</b>, without reversing the segment's sales growth.",
+    method:[
+      "<b>Stakeholder mapping (DARCI):</b> identified the decider, accountable owners and who needs to be consulted or informed.",
+      "<b>SMART problem statement:</b> turned a vague concern into a specific, measurable and time-bound question.",
+      "<b>Issue tree:</b> split the decline into margin compression and cost-to-serve, then broke each into testable causes.",
+      "<b>Hypotheses and metrics:</b> prioritised each hypothesis and defined the metrics needed to prove or reject it."],
+    result:[
+      "<b>High priority:</b> deeper discounts on Corporate orders and a sales mix shifting to low-margin products.",
+      "<b>Medium priority:</b> rising cost-to-serve and a customer mix skewed to low-margin accounts.",
+      "<b>Recommendations:</b> discount limits with manager approval, tiered account pricing, revisiting low-margin bundles, renegotiating shipping, and a monthly profit-health review owned by Sales and Finance."] },
 
-  <footer>
-    <div class="wrap">© 2026 Igo Relindo · Bandar Lampung, Indonesia</div>
-  </footer>
+  { id:"stats", cat:"Statistics",
+    title:"Business Evaluation: TokoBli Campaign Analysis",
+    short:"Evaluated three twin-date campaigns and proved a new product page lifts transaction value by <b>11.3%</b> with an A/B test.",
+    tags:["Descriptive Stats","IQR","A/B Test","t-test"],
+    tools:"Google Sheets",
+    period:"Jul 2026", team:"Individual", img:"images/stats.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1bTD8QjNG0cS6g7KrJ0Vy_PY5WmQD8Seh5noeJ4Pa4Y0/edit",ico:"slides"}],
+    background:"TokoBli, an e-commerce platform, ran three twin-date campaigns in 2023 (10/10, 11/11 and 12/12) with 10,159 transactions across 15 product categories.",
+    objective:"Find out how TokoBli can <b>increase total revenue in its next twin-date campaign</b>, based on how the 2023 campaigns performed.",
+    method:[
+      "<b>Data cleaning:</b> removed an empty column and 5 duplicate rows, filled blanks with medians, and fixed data types.",
+      "<b>Outlier handling:</b> removed 12 revenue outliers with the IQR method, leaving 10,142 rows.",
+      "<b>Descriptive analysis:</b> compared revenue and revenue per rupiah of discount by campaign and by category.",
+      "<b>A/B test:</b> two-sample t-test (unequal variances, α = 0.05) comparing the old and new product page."],
+    result:[
+      "<b>Two different winners:</b> 11/11 brought the most revenue (Rp 16.62B), while 12/12 was the most efficient at 58.5 revenue per Rp 1 of discount.",
+      "<b>Men's Fashion</b> led all categories at Rp 14.6B while spending only 0.86% of its revenue on discounts.",
+      "<b>New product page:</b> mean transaction value rose <b>11.3%</b> (p &lt; 0.0001).",
+      "<b>Recommendations:</b> roll out the new page, use 12/12's lean discounting as the benchmark, and set discount allocation per campaign."] },
 
-  <script src="js/main.js"></script>
+  { id:"sql", cat:"SQL",
+    title:"RevoGrocers Sales Performance: 9 Business Questions in BigQuery",
+    short:"Answered 9 business questions on a <b>7-table</b> grocery database with JOINs, CTEs and window functions.",
+    tags:["SQL","BigQuery","CTE","Window Functions"],
+    tools:"SQL (Google BigQuery)",
+    period:"Aug 2026", team:"Individual", img:"images/sql.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1zzNC8bXSfEVNN55tyrj2ntvJjGFTYdJD-7iuMQUlUbM/edit?usp=sharing",ico:"slides"}],
+    background:"RevoGrocers, a grocery retailer, keeps its sales data in a 7-table database (sales, customers, products, categories, cities, countries, employees) and needed a clear read on what drives revenue.",
+    objective:"Answer <b>9 business questions</b> on revenue, pricing, customers and loyalty to guide category, pricing and customer strategy.",
+    method:[
+      "<b>Data validation:</b> checked row counts, categories and the price column, then applied one revenue formula: Quantity × Price × (1 − Discount).",
+      "<b>JOIN and GROUP BY</b> for revenue, units and unique customers per category.",
+      "<b>CTEs and subqueries</b> for contribution percentages and repeat purchase rate.",
+      "<b>Window functions:</b> RANK() to find the top customer and SUM() OVER() for their running total."],
+    result:[
+      "<b>Volume, not price:</b> the top 4 categories (Confections, Meat, Poultry, Cereals) rank the same on revenue and units sold.",
+      "<b>Grain</b> has the highest unit price and the lowest volume — a possible price barrier.",
+      "<b>Loyalty is already high</b> (93.68–99.85% repeat rate), so the growth lever is spend per customer, not new buyers.",
+      "<b>Recommendations:</b> protect top categories, test Grain pricing or bundles, drive cross-selling, and spread loyalty beyond a few heavy spenders."] },
+
+  { id:"python", cat:"Python",
+    title:"RevoBank Customer Segmentation: Data Cleaning, EDA and RFM",
+    short:"Cleaned 6 months of credit-card data and segmented <b>1,938 customers</b> with RFM — 42% of customers drive only 2.4% of revenue.",
+    tags:["Python","pandas","EDA","RFM"],
+    tools:"Python (pandas, numpy, matplotlib) in Google Colab",
+    period:"Aug – Sep 2026", team:"Individual", img:"images/python.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1uD3S4rjBCF3oR2XugfUoZDDaCl8LRBzs/edit?usp=sharing",ico:"slides"},
+           {label:"Notebook",url:"https://colab.research.google.com/drive/1H88hse6GKrycn0HTWDZLgcHeXJKcdYG6?usp=sharing",ico:"code"}],
+    background:"RevoBank wants its existing credit-card customers to transact more. The data covered a card table (5,599 rows) and a user table (2,000 rows) over 6 months.",
+    objective:"Identify <b>which customers to grow, which to win back, and which to deprioritise</b>, so marketing budget goes where it pays off.",
+    method:[
+      "<b>Data cleaning:</b> fixed money and date types, standardised card brands, removed 31 duplicates and 25 unusable cards, leaving 5,531 usable cards.",
+      "<b>Feature engineering:</b> added age at cutoff, a retired flag and debt-to-income ratio (DTI).",
+      "<b>EDA:</b> measured net profit and fraud, and profiled spending by card brand, retirement status and credit score.",
+      "<b>RFM segmentation:</b> scored customers on recency, frequency and monetary value, with non-transacting customers set aside first."],
+    result:[
+      "<b>Rp 5.64B</b> net profit over 6 months; fraud was only 0.263% by volume yet consumed about 17.6% of gross MDR profit.",
+      "<b>Growth-Ready</b> segments are 20.8% of customers but drive 44.7% of revenue.",
+      "<b>Inactive</b> customers are 42.1% of the base but bring only 2.4% of revenue.",
+      "<b>Recommendations:</b> upsell 260 Growth-Ready clients, win back 227 At Risk customers one-on-one, and use only low-cost nudges for the 816 inactive ones."] },
+
+  { id:"tableau", cat:"Data Visualisation",
+    title:"Revo Hospital Financial Performance Dashboard",
+    short:"Tableau dashboard that located <b>Rp 14.5 billion</b> of pending hospital revenue by department and patient type.",
+    tags:["Tableau","LOD","Dashboard Design"],
+    tools:"Tableau Public (relationships, LOD expressions, table calculations, maps)",
+    period:"Sep 2026", team:"Individual", img:"images/tableau.png", disc:DISC_REVOU,
+    links:[{label:"Open Slides",url:"https://drive.google.com/file/d/1Ehe0HD16nd9rekmN5rKQ4ZM8Y2-UbYiF/view",ico:"slides"},
+           {label:"Dashboard",url:"https://public.tableau.com/views/DATAVIZ_JUN26_Igo_Relindo_Intermediate/Dashboard1",ico:"dash"}],
+    background:"Revo Hospital runs 8 branches and 8 departments. Its Finance Lead needed a monthly view of where revenue collection was weakest, using billing and admission data from Jan 2024 to Dec 2025.",
+    objective:"Build an <b>operational dashboard</b> that shows where billing follow-up should go each month.",
+    method:[
+      "<b>Data model:</b> Tableau relationships instead of physical joins, joined on patient ID (1,470 of 1,800 patients share a name).",
+      "<b>Metrics:</b> net revenue, collection rate, pending revenue, out-of-pocket ratio and monthly trend.",
+      "<b>Chart choices:</b> KPI cards, sorted bars, Paid vs Pending trend, histogram of patient burden and a branch map.",
+      "<b>LOD expression</b> to keep each department's full-period baseline visible while filters change."],
+    result:[
+      "<b>Rp 14.5B (14%)</b> of net revenue is still pending.",
+      "<b>Cardiology</b> has the lowest collection rate (81.7%); <b>self-pay</b> patients pay only 64.6% vs 87–90% for insured patients.",
+      "<b>Bigger bills are harder to collect</b>, and pending revenue grew as admissions rose; location is not the driver.",
+      "<b>Recommendations:</b> review Cardiology billing, require deposits for self-pay, scale billing capacity with volume, and offer instalments above Rp 20M."] }
+];
+
+const list = a => Array.isArray(a) ? '<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>' : `<p>${a}</p>`;
+const coverHTML = (p,i,big) => {
+  const hs=[72,48,90,60,82];
+  return `<div class="cover"${big?' style="height:100%;min-height:320px"':''}><span class="num">${p.featured?'★':'0'+i}</span>
+    <div class="bars">${hs.map(h=>`<i style="height:${h}%"></i>`).join('')}</div>
+    <div class="cc">${p.cat}</div><div class="ct">${p.title.split(' — ')[0].split(':')[0]}</div></div>`;
+};
+const placeholder = p => `<div class="ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    <b>Project screenshot</b><span>Upload: <code>${p.img}</code></span></div>`;
+const imgOrPlaceholder = p =>
+  `<img src="${p.img}" alt="${p.title}" onerror="this.outerHTML=window.__ph('${p.id}')">`;
+window.__ph = id => placeholder(projects.find(x=>x.id===id));
+
+/* featured card */
+const F = projects.find(p=>p.featured);
+document.getElementById('featured').innerHTML = `
+  <div class="card featured reveal">
+    <a href="#project/${F.id}" data-open="${F.id}" class="p-cover-click">${coverHTML(F,0,true)}</a>
+    <div class="f-body">
+      <span class="tagline">Featured case study</span>
+      <h3>${F.title.split(' — ')[0]}</h3>
+      <p>${F.short}</p>
+      <div class="kpis">${F.kpis.map(k=>`<div class="kpi"><div class="v grad-text">${k[0]}</div><div class="k">${k[1]}</div></div>`).join('')}</div>
+      <div class="tags">${F.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="links"><a href="#project/${F.id}" data-open="${F.id}">View Details ${ICO.arrow}</a>
+        ${F.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${ICO[l.ico]} ${l.label}</a>`).join('')}</div>
+    </div>
+  </div>`;
+
+/* project grid */
+document.getElementById('projGrid').innerHTML = projects.filter(p=>!p.featured).map((p,i)=>`
+  <div class="card proj reveal">
+    <a href="#project/${p.id}" data-open="${p.id}" class="p-cover-click">${coverHTML(p,i+1)}</a>
+    <div class="p-body"><h3>${p.title}</h3><p>${p.short}</p>
+      <div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="links"><a href="#project/${p.id}" data-open="${p.id}">View Details ${ICO.arrow}</a>
+      ${p.links[0]?`<a href="${p.links[0].url}" target="_blank" rel="noopener">${ICO[p.links[0].ico]} ${p.links[0].label}</a>`:''}</div></div></div>`).join('');
+
+/* detail view */
+const $ = id => document.getElementById(id);
+let lastScroll = 0;
+function openDetail(id, push){
+  const p = projects.find(x=>x.id===id); if(!p) return;
+  if(!document.body.classList.contains('detail-open')) lastScroll = window.scrollY;
+  $('dCat').textContent=p.cat; $('dTitle').textContent=p.title;
+  $('dImg').innerHTML=imgOrPlaceholder(p);
+  $('dPeriod').textContent=p.period; $('dTeam').textContent=p.team; $('dTools').textContent=p.tools;
+  $('dDisc').textContent=p.disc||'';
+  $('dBg').innerHTML=list(p.background); $('dObj').innerHTML=list(p.objective);
+  $('dMethod').innerHTML=list(p.method); $('dResult').innerHTML=list(p.result);
+  $('dActions').innerHTML=p.links.map((l,k)=>`<a class="${k?'sec':'pri'}" href="${l.url}" target="_blank" rel="noopener">${ICO[l.ico]} ${l.label}</a>`).join('');
+  $('detail').hidden=false;
+  document.body.classList.add('detail-open');
+  window.scrollTo(0,0);
+  document.title = p.title.split(' — ')[0]+' — Igo Relindo';
+  if(push){ try{ history.pushState({p:id},'','#project/'+id); }catch(e){} }
+}
+function closeDetail(push){
+  if(!document.body.classList.contains('detail-open')) return;
+  $('detail').hidden=true;
+  document.body.classList.remove('detail-open');
+  document.title='Igo Relindo — Data Analyst';
+  if(push){ try{ history.pushState({},'','#projects'); }catch(e){} }
+  requestAnimationFrame(()=>{ const t=$('projects'); t ? window.scrollTo(0, t.offsetTop-72) : window.scrollTo(0,lastScroll); });
+}
+/* clicks work even where URL hashes are blocked (e.g. previews) */
+document.addEventListener('click', e=>{
+  const o = e.target.closest('[data-open]');
+  if(o){ e.preventDefault(); openDetail(o.dataset.open, true); return; }
+  if(e.target.closest('[data-close]')){ e.preventDefault(); closeDetail(true); }
+});
+function route(){
+  const m = location.hash.match(/^#project\/(.+)$/);
+  if(m) openDetail(m[1], false); else closeDetail(false);
+}
+window.addEventListener('popstate', route);
+window.addEventListener('hashchange', route);
+
+/* ---------- ANIMATED LOGO ---------- */
+const logoTxt="Hi, There!";
+document.getElementById('logo').innerHTML =
+  [...logoTxt].map((c,i)=>`<span class="ch" style="animation-delay:${i*0.09}s">${c===' '?'&nbsp;':c}</span>`).join('') +
+  '<span class="hand">👋</span>';
+
+/* ---------- TYPING EFFECT ---------- */
+const t1=document.getElementById('typed1'), t2=document.getElementById('typed2'),
+      c1=document.getElementById('c1'), c2=document.getElementById('c2');
+const pre="Hi, I'm ", name="Igo Relindo";
+const roles=["Aspiring Data Analyst","KPI & Performance Analyst","Dashboard Builder","Data Storyteller"];
+let k=0;
+function typeHello(){
+  const full=pre+name;
+  if(k<=full.length){
+    const s=full.slice(0,k);
+    t1.innerHTML = s.length<=pre.length ? s : pre+'<span class="nm">'+s.slice(pre.length)+'</span>';
+    k++; setTimeout(typeHello, 95);
+  } else { c1.style.display='none'; c2.style.display='inline-block'; setTimeout(loopRoles,300); }
+}
+let r=0,ci=0,del=false;
+function loopRoles(){
+  const w=roles[r];
+  t2.textContent = w.slice(0,ci);
+  if(!del && ci<w.length){ci++; setTimeout(loopRoles,70);}
+  else if(!del){del=true; setTimeout(loopRoles,1800);}
+  else if(ci>0){ci--; setTimeout(loopRoles,35);}
+  else {del=false; r=(r+1)%roles.length; setTimeout(loopRoles,350);}
+}
+setTimeout(typeHello,500);
+
+/* ---------- THEME TOGGLE ---------- */
+const root=document.documentElement, tIcon=document.getElementById('tIcon');
+const moon='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+const sun='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>';
+function setTheme(t){root.setAttribute('data-theme',t);tIcon.innerHTML=t==='light'?sun:moon;try{localStorage.setItem('theme',t)}catch(e){}}
+let saved=null; try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved||'dark');
+document.getElementById('toggle').onclick=()=>setTheme(root.getAttribute('data-theme')==='light'?'dark':'light');
+
+/* ---------- MOBILE MENU ---------- */
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('open'));
+
+/* ---------- SCROLL: progress + active nav ---------- */
+const links=[...menu.querySelectorAll('a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';
+  let cur=0; secs.forEach((s,i)=>{ if(s && s.getBoundingClientRect().top<=120) cur=i; });
+  links.forEach((a,i)=>a.classList.toggle('active',i===cur));
+},{passive:true});
+
+/* ---------- REVEAL ON SCROLL ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*0.08+'s';io.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+route();
+</script>
 </body>
 </html>
