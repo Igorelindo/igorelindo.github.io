@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Igo Relindo | Data Analyst Portfolio</title>
+  <meta name="description" content="Data analyst portfolio of Igo Relindo: six case studies in SQL, Python, Power BI and Tableau, from framing a business problem to delivering a dashboard.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Igo Relindo | Data Analyst Portfolio">
+  <meta property="og:description" content="Six case studies from problem framing to dashboard, built with SQL, Python, Power BI and Tableau.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">Igo Relindo</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#case-study">Case study</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 id="hero-title">I check that a drop is real before I explain it.</h1>
+          <p class="lede">I'm Igo Relindo, a data analyst based in Bandar Lampung. I work in automotive after-sales, where I monitor KPIs and build the dashboards and models my team uses. I'm finishing RevoU's Full-Stack Data Analytics programme and looking for a Data Analyst role.</p>
+          <div class="actions">
+            <a class="button solid" href="#case-study">Read the capstone case study</a>
+            <a class="button" href="mailto:igorelindo87@gmail.com">Email me</a>
+          </div>
+        </div>
+
+        <figure class="chart-figure">
+          <svg id="winrate-chart" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">Win rate of closed deals by close month, 2017</title>
+            <desc id="chart-desc">Bar chart. March 82%, April 49%, May 54%, June 83%, July 49%, August 57%, September 79%, October 49%, November 53%, December 78%. The last month of every quarter wins 78 to 83%, every other month 49 to 57%.</desc>
+          </svg>
+          <figcaption><strong>The win rate follows the calendar.</strong> Bars show win rate of closed deals by close month. Dashed lines and the figures underneath show the quarterly rate that was reported to management. Source: my capstone analysis of 8,800 CRM opportunities.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Featured case study -->
+    <section class="band tint" id="case-study" aria-labelledby="case-title">
+      <div class="wrap case-grid">
+        <div>
+          <h2 id="case-title">The win-rate drop that never happened</h2>
+          <p>Management saw win rate fall from <strong>82.1% to 60.3%</strong> during 2017 and was weighing extra headcount. I analysed 8,800 CRM opportunities to find the cause.</p>
+          <p>There was no drop. No deal in the data closes before 1 March 2017, so the first "quarter" in the report held a single strong month. Every last month of a quarter wins 78 to 83% of its deals. Every other month wins 49 to 57%. Measured by full quarter, the business is steady at about 61%.</p>
+          <p>The real opportunity is the mid-quarter gap. Lifting months one and two from 52% to 65% takes overall win rate to 69.8%, worth about <strong>USD 1.26M</strong> over three quarters, with no new hires.</p>
+          <p>I started with three hypotheses from an issue tree. Re-testing them on equal periods showed two of my own first conclusions were artifacts of the same reading error, so I dropped them and tested timing instead.</p>
+          <ul class="links">
+            <li><a href="https://app.powerbi.com/view?r=eyJrIjoiYjUzMDQyZmUtMGQyOS00Njk0LWEzMjMtNzJlMzJiNjIyYTU4IiwidCI6ImE0ZWJlNDI1LTQ5MjUtNDhlZi05OGViLWUxMWRiNWQ4NDI3ZSIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener">Open the Power BI dashboard</a></li>
+            <li><a href="https://drive.google.com/file/d/14uFagsaBlPlWRaQmS7qLks6-09P3OE3U/view" target="_blank" rel="noopener">View the presentation deck</a></li>
+            <li><a href="https://colab.research.google.com/drive/1gxBMiP_uaJWWRgaJmUB0CO9v-VhFUN7x?usp=sharing" target="_blank" rel="noopener">Open the Python notebook</a></li>
+          </ul>
+          <p class="caveat">What could make these numbers wrong: only 10 months of closes exist, the USD 1.26M assumes flat closed-deal volume and a USD 2,393 average won deal, and the data cannot say why losses cluster early. The company, Vantage Hardware Co., is fictional and built around a public dataset, so this is a method exercise.</p>
+        </div>
+
+        <table class="facts">
+          <caption>Four hypotheses, tested on equal periods</caption>
+          <tbody>
+            <tr>
+              <th scope="row">Capacity</th>
+              <td>Workload and win rate are unrelated across 104 agent-quarters (r = -0.06).</td>
+              <td class="verdict-no">Not supported</td>
+            </tr>
+            <tr>
+              <th scope="row">Speed</th>
+              <td>Inside the same month, fast and slow deals differ by at most 4 points.</td>
+              <td class="verdict-no">Not supported</td>
+            </tr>
+            <tr>
+              <th scope="row">Customer mix</th>
+              <td>Client revenue and headcount are flat. Every sector wins 61 to 65%.</td>
+              <td class="verdict-no">Not supported</td>
+            </tr>
+            <tr>
+              <th scope="row">Timing</th>
+              <td>49%, 55% and 80% in months 1, 2 and 3 of every quarter, in every region and manager.</td>
+              <td class="verdict-yes">Supported</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="band" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <h2 id="projects-title">Five projects, built in order</h2>
+        <p class="band-intro">Each project adds a skill: framing the problem, testing it, querying it, cleaning and segmenting it, then presenting it. Open a row for the question, the method and the result.</p>
+
+        <div class="projects">
+
+          <details class="project" id="project-1">
+            <summary>
+              <span class="project-num">1</span>
+              <span>
+                <span class="project-title">Structured Business Analysis: Corporate Segment Profit Decline</span>
+                <span class="project-finding">Company sales grew 20.4% while Corporate profit fell 13.6%. I framed the problem before touching any data.</span>
+              </span>
+              <span class="project-tools">Issue trees, SMART, DARCI</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="project-body">
+              <dl>
+                <dt>The question</dt>
+                <dd>How can RevoShion restore Corporate segment profit growth to at least +10% year on year within two quarters, without reversing the segment's sales growth?</dd>
+                <dt>What I did</dt>
+                <dd>Mapped stakeholders with DARCI, wrote a SMART problem statement, built an issue tree for margin compression and cost-to-serve, and turned each branch into a prioritised hypothesis with the metrics that would prove it.</dd>
+                <dt>What I recommended</dt>
+                <dd>Set a discount limit with manager approval beyond it, reward more profitable order patterns among the largest accounts, revisit pricing on low-margin bundles, renegotiate shipping, and review segment profit monthly.</dd>
+                <dt>Context</dt>
+                <dd>Understanding Business Process assignment, RevoU, July 2026. RevoShion is a fictional retailer and no data processing was required.</dd>
+              </dl>
+              <ul class="links">
+                <li><a href="https://docs.google.com/presentation/d/1q8_rZY95xOq-wyh_4BtiXmdzp3XR6arsubQ4ffBDtic/edit" target="_blank" rel="noopener">View the presentation</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="project" id="project-2">
+            <summary>
+              <span class="project-num">2</span>
+              <span>
+                <span class="project-title">TokoBli Campaign Evaluation: Statistics and A/B Testing</span>
+                <span class="project-finding">The campaign with the most revenue was not the most efficient, and a new product page lifts transaction value 11.3%.</span>
+              </span>
+              <span class="project-tools">Excel, statistics, A/B test</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="project-body">
+              <dl>
+                <dt>The question</dt>
+                <dd>How can TokoBli increase total revenue in its next twin-date campaign, based on how its 2023 campaigns performed?</dd>
+                <dt>What I did</dt>
+                <dd>Cleaned 10,159 transactions to 10,142, removed 12 revenue outliers with the IQR method, compared the 10/10, 11/11 and 12/12 campaigns by revenue and by revenue per rupiah of discount, then ran a two-sample t-test on the old and new product page.</dd>
+                <dt>What I found</dt>
+                <dd>
+                  <ul>
+                    <li>11/11 brought the most revenue (Rp 16.62 billion). 12/12 was the most efficient, earning 58.5 per Rp 1 of discount with the smallest budget.</li>
+                    <li>Mean transaction value was Rp 830,460 on the new page against Rp 746,103 on the old one, with p below 0.0001.</li>
+                  </ul>
+                </dd>
+                <dt>What I recommended</dt>
+                <dd>Roll out the new page before the next campaign, use 12/12 as the efficiency benchmark, and keep Men's Fashion on minimal discount.</dd>
+              </dl>
+              <ul class="links">
+                <li><a href="https://docs.google.com/presentation/d/1bTD8QjNG0cS6g7KrJ0Vy_PY5WmQD8Seh5noeJ4Pa4Y0/edit" target="_blank" rel="noopener">View the presentation</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="project" id="project-3">
+            <summary>
+              <span class="project-num">3</span>
+              <span>
+                <span class="project-title">RevoGrocers Sales Performance: 9 Business Questions in SQL</span>
+                <span class="project-finding">The top categories win on volume, not price. Loyalty is already high everywhere, so the lever is spend per customer.</span>
+              </span>
+              <span class="project-tools">BigQuery SQL, CTEs, window functions</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="project-body">
+              <dl>
+                <dt>The question</dt>
+                <dd>Which categories drive revenue, how do price and buyers relate, and where can the business grow?</dd>
+                <dt>What I did</dt>
+                <dd>Validated a 7-table grocery database first, then answered nine questions with JOINs, CTEs and window functions. Revenue was calculated the same way throughout: quantity × price × (1 − discount).</dd>
+                <dt>What I found</dt>
+                <dd>
+                  <ul>
+                    <li>Confections leads on volume without being the most expensive per unit.</li>
+                    <li>Grain has the highest unit price (61.43) and the lowest volume, a possible price barrier.</li>
+                    <li>Repeat purchase rates sit between 93.68% and 99.85% in every category.</li>
+                  </ul>
+                </dd>
+                <dt>What I recommended</dt>
+                <dd>Protect stock and promotions for the top four categories, test a Grain bundle, cross-sell to lift spend per customer, and build a reward programme that spreads loyalty beyond a few heavy spenders.</dd>
+              </dl>
+              <ul class="links">
+                <li><a href="https://docs.google.com/presentation/d/1zzNC8bXSfEVNN55tyrj2ntvJjGFTYdJD-7iuMQUlUbM/edit?usp=sharing" target="_blank" rel="noopener">View the presentation</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="project" id="project-4">
+            <summary>
+              <span class="project-num">4</span>
+              <span>
+                <span class="project-title">RevoBank Customer Segmentation: Cleaning, EDA and RFM in Python</span>
+                <span class="project-finding">42% of customers drive only 2.4% of revenue, while a fifth of the base drives nearly half of it.</span>
+              </span>
+              <span class="project-tools">Python, pandas, RFM</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="project-body">
+              <dl>
+                <dt>The question</dt>
+                <dd>How can a bank get existing credit-card customers to transact more?</dd>
+                <dt>What I did</dt>
+                <dd>Cleaned six months of card and user data (5,531 usable cards out of 5,599), measured profit and fraud, then segmented 1,938 customers with RFM. I chose RFM over K-Means because each segment comes with a clear action.</dd>
+                <dt>What I found</dt>
+                <dd>
+                  <ul>
+                    <li>Net profit was Rp 5.64 billion over six months. Fraud was 0.263% of volume yet consumed about 17.6% of gross profit.</li>
+                    <li>Growth-ready customers are 20.8% of the base and 44.7% of revenue. The inactive group is 42.1% of customers and 2.4% of revenue.</li>
+                  </ul>
+                </dd>
+                <dt>What I recommended</dt>
+                <dd>Upsell the 260 growth-ready clients, win back the 227 at-risk customers one to one, and use a low-cost automated nudge for the inactive group instead of a big re-acquisition push.</dd>
+              </dl>
+              <ul class="links">
+                <li><a href="https://colab.research.google.com/drive/1H88hse6GKrycn0HTWDZLgcHeXJKcdYG6?usp=sharing" target="_blank" rel="noopener">Open the Python notebook</a></li>
+                <li><a href="https://docs.google.com/presentation/d/1uD3S4rjBCF3oR2XugfUoZDDaCl8LRBzs/edit?usp=sharing" target="_blank" rel="noopener">View the presentation</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="project" id="project-5">
+            <summary>
+              <span class="project-num">5</span>
+              <span>
+                <span class="project-title">Revo Hospital Financial Performance Dashboard</span>
+                <span class="project-finding">A Tableau dashboard that located Rp 14.5 billion of pending revenue by department and patient type.</span>
+              </span>
+              <span class="project-tools">Tableau, LOD expressions</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="project-body">
+              <dl>
+                <dt>Who it is for</dt>
+                <dd>The Finance Lead of a hospital network, who opens it monthly to decide where billing follow-up should go. It leads with three KPIs, then narrows down.</dd>
+                <dt>What I did</dt>
+                <dd>Modelled five related tables with Tableau relationships instead of joins, joined on patient ID because 1,470 of 1,800 patients share a name, and chose each chart for the question it answers.</dd>
+                <dt>What I found</dt>
+                <dd>
+                  <ul>
+                    <li>14% of net revenue is still pending.</li>
+                    <li>Cardiology collects 81.7%, the lowest of eight departments. Self-pay patients collect 64.6% against 87 to 90% for insured patients.</li>
+                    <li>Admissions rose from 1,146 in 2024 to 3,854 in 2025, and pending revenue climbed with them.</li>
+                  </ul>
+                </dd>
+                <dt>What I recommended</dt>
+                <dd>Review Cardiology billing, require a deposit for self-pay admissions, grow billing capacity with volume, and offer instalments above Rp 20 million. Whether the same patients drive all three problems still needs a combined cross-tab.</dd>
+              </dl>
+              <ul class="links">
+                <li><a href="https://public.tableau.com/views/DATAVIZ_JUN26_Igo_Relindo_Intermediate/Dashboard1" target="_blank" rel="noopener">Open the Tableau dashboard</a></li>
+                <li><a href="https://drive.google.com/file/d/1Ehe0HD16nd9rekmN5rKQ4ZM8Y2-UbYiF/view" target="_blank" rel="noopener">View the presentation</a></li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics at work -->
+    <section class="band tint" aria-labelledby="work-title">
+      <div class="wrap work-grid">
+        <div>
+          <h2 id="work-title">Analytics at work</h2>
+          <p>A Power BI management dashboard I built for a service outlet network in my current role. It runs on internal company data, so the report is not published here.</p>
+        </div>
+        <div>
+          <h3>Network performance dashboard in Power BI</h3>
+          <ul class="plain-list">
+            <li>Star schema data model with a fact table for service transactions and dimensions for outlet, area and date, so every measure filters consistently.</li>
+            <li>DAX measures for month-to-date volume, achievement against target, month-over-month growth and each area's share of the network total.</li>
+            <li>A refreshable pipeline from Google Sheets through Power Query.</li>
+            <li>Fixed three problems on the way: relationship errors in the model, regional number and date formats read wrongly, and empty source columns that broke refreshes.</li>
+            <li>Management now reviews one consistent view of the network, with drill-down from area to individual outlet.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="band" id="about" aria-labelledby="about-title">
+      <div class="wrap two-col">
+        <div>
+          <h2 id="about-title">About me</h2>
+          <p>I work in after-sales service operations in the automotive industry, where my job is to help a network of service outlets reach their targets. I do that with data: monitoring KPIs, working out which outlets need attention and why, and coaching outlet managers with the numbers in hand.</p>
+          <p>I studied Geophysical Engineering, where analysing field data was the core of the work, and I carried that habit into operations. I built the tools I needed myself, from Power BI dashboards and Excel models to Python scripts. I'm now completing the Full-Stack Data Analytics programme at RevoU to put a formal foundation under that experience.</p>
+        </div>
+        <ul class="principles">
+          <li><strong>Check the premise before the cause.</strong>In my capstone, the declining win rate I was asked to explain was not declining at all.</li>
+          <li><strong>Use methods I can explain.</strong>If I cannot walk a stakeholder through how a number was produced, it does not go in the deck.</li>
+          <li><strong>End with something to do.</strong>Each recommendation gets an owner, a timeline and a KPI.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience and education -->
+    <section class="band tint" id="experience" aria-labelledby="exp-title">
+      <div class="wrap two-col">
+        <div>
+          <h2 id="exp-title">Experience</h2>
+          <div class="entry">
+            <h3>Service Engineer Supervisor and Data and Business Performance Analyst</h3>
+            <p class="when">Automotive main dealer, Lampung, Indonesia · 2022 to present</p>
+            <ul class="plain-list">
+              <li>Analyse operational and business data across a network of service workshops to find trends, performance gaps and improvement opportunities.</li>
+              <li>Track business KPIs and give management the insight behind the numbers.</li>
+              <li>Build structured reporting and dashboards, including a Power BI management dashboard.</li>
+              <li>Support early-warning monitoring that flags workshops whose performance signals risk before it shows in results.</li>
+              <li>Prepare multi-source data with KNIME and Excel and audit data quality in submitted records.</li>
+              <li>Present analysis to management and translate it into recommendations people can act on.</li>
+              <li>Selected for the company's Leadership Development Program, Batch 11.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <h3>Assistant Lecturer, Geothermal Exploration</h3>
+            <p class="when">University of Lampung · 2020</p>
+            <p>Supported academic practicum and analytical evaluation activities during my degree.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2>Education and training</h2>
+          <div class="entry">
+            <h3>RevoU, Full-Stack Data Analytics</h3>
+            <p class="when">June 2026 batch · capstone submitted October 2026</p>
+            <p>Business understanding, statistics, SQL on BigQuery, Python for analysis, data visualisation in Tableau and Power BI, data communication, and an end-to-end capstone.</p>
+          </div>
+          <div class="entry">
+            <h3>University of Lampung, Geophysical Engineering</h3>
+            <p class="when">Aug 2016 to Jun 2021 · GPA 3.35 / 4.0</p>
+            <ul class="plain-list">
+              <li>Presenter at the Joint Convention Yogyakarta, 2019</li>
+              <li>PPA Scholarship awardee, 2018</li>
+              <li>Top 10 finalist, IUGC Geoposter Competition by ITB, 2018</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <h3>Courses and certifications</h3>
+            <table class="certs">
+              <tbody>
+                <tr><th scope="row">Power BI Training</th><td>Tunas Group</td><td>2024</td></tr>
+                <tr><th scope="row">Applied Data Science and Business</th><td>Astra Honda Motor</td><td>2023</td></tr>
+                <tr><th scope="row">Data Analytics with KNIME</th><td>Iykra</td><td>2022</td></tr>
+                <tr><th scope="row">Big Data Using Python</th><td>Kominfo</td><td>2021</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="band" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 id="skills-title">Skills and tools</h2>
+        <table class="skills">
+          <tbody>
+            <tr>
+              <th scope="row">SQL</th>
+              <td>BigQuery: JOINs, CTEs, subqueries, window functions (RANK, LAG, LEAD, running totals), cohort analysis</td>
+              <td>RevoGrocers sales analysis</td>
+            </tr>
+            <tr>
+              <th scope="row">Python</th>
+              <td>pandas, numpy, matplotlib: data cleaning, EDA, RFM segmentation</td>
+              <td>Capstone, RevoBank segmentation</td>
+            </tr>
+            <tr>
+              <th scope="row">Business intelligence</th>
+              <td>Power BI: star schema modelling, DAX, Power Query. Tableau: relationships, LOD expressions, table calculations, maps</td>
+              <td>Capstone, network dashboard, hospital dashboard</td>
+            </tr>
+            <tr>
+              <th scope="row">Spreadsheets</th>
+              <td>Excel (VBA, Power Query, pivot tables, lookup models), Google Sheets</td>
+              <td>Revenue simulation model, programme review dashboards</td>
+            </tr>
+            <tr>
+              <th scope="row">Data preparation</th>
+              <td>KNIME: multi-file joins and matrix outputs</td>
+              <td>Customer movement analysis across 229 sub-districts</td>
+            </tr>
+            <tr>
+              <th scope="row">Methods</th>
+              <td>Root cause analysis with issue trees, descriptive statistics, two-sample t-tests, RFM segmentation, cohort and funnel analysis, Balanced Scorecard, IQR outlier review, impact sizing</td>
+              <td>Across all projects</td>
+            </tr>
+            <tr>
+              <th scope="row">Communication</th>
+              <td>Storyboarding with the Pyramid Principle, decluttering charts so one message stands out, presenting to non-technical stakeholders</td>
+              <td>Every deck above</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="band contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Let's talk</h2>
+        <p>I'm open to Data Analyst opportunities. Email is the fastest way to reach me.</p>
+        <div class="actions">
+          <a class="button solid" href="mailto:igorelindo87@gmail.com">igorelindo87@gmail.com</a>
+          <a class="button" href="https://www.linkedin.com/in/igo-r-928939170/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Igo Relindo · Bandar Lampung, Indonesia</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
