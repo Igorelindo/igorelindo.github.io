@@ -129,7 +129,9 @@ section{padding:100px 0;position:relative}
 .edu ul{padding-left:18px;color:var(--muted);font-size:.93rem}
 .edu ul li::marker{color:var(--y2)}
 .sub{text-align:center;font-size:1.7rem;font-weight:700;margin:70px 0 30px}
-.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cert-link{color:inherit;border-bottom:1px dashed var(--y2)}
+.cert-link:hover{color:var(--y2)}
 .cert{text-align:center;padding:28px 18px}
 .cert .badge{margin:0 auto 14px;width:62px;height:62px}
 .cert h4{font-size:1rem;line-height:1.35;margin-bottom:4px}
@@ -149,6 +151,7 @@ section{padding:100px 0;position:relative}
 .job li{margin-bottom:8px;font-size:.96rem}
 .job li::marker{color:var(--y2)}
 .job li b{color:var(--y2);font-weight:600}
+.timeline+.sub{margin-top:60px}
 .ach{font-size:1.02rem;margin:18px 0 10px;color:var(--y2)}
 
 /* PROJECTS */
@@ -250,6 +253,13 @@ footer .muted{color:#a9a497}
 .d-oh svg{width:24px;height:24px;color:var(--y2)}
 .blk{background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--y2);border-radius:16px;padding:20px 22px;margin-bottom:18px}
 .blk:last-child{margin-bottom:0}
+.d-resp{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.d-resp h4{font-size:1rem;margin-bottom:8px}
+.d-resp ul{padding-left:20px}
+.d-resp li{font-size:.94rem;margin-bottom:6px}
+.d-resp li::marker{color:var(--y2)}
+.d-scope{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.d-scope span{font-size:.8rem;font-weight:600;padding:4px 11px;border-radius:7px;background:rgba(255,195,0,.13);color:var(--y2);border:1px solid rgba(255,195,0,.25)}
 .blk h4{font-size:1.15rem;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
 .blk p,.blk li{font-size:.97rem;line-height:1.7}
 .blk ul{padding-left:20px}
@@ -309,9 +319,10 @@ body.detail-open #main,body.detail-open nav{display:none}
       <ul class="menu" id="menu">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Work Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
       </ul>
       <button class="toggle" id="toggle" aria-label="Toggle light/dark mode"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="tIcon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
       <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -351,45 +362,35 @@ body.detail-open #main,body.detail-open nav{display:none}
 <section id="about" class="alt">
   <div class="container">
     <div class="head reveal"><h2>About <span class="grad-text">Me</span></h2><div class="bar"></div></div>
-    <p class="about-text reveal" style="margin-bottom:0">Hi, I'm Igo! I work in <b>after-sales service operations in the automotive industry</b>, where my job is to help a network of service outlets reach their targets — with data. I monitor KPIs, work out which outlets need attention and why, and coach outlet managers with the numbers in hand. I studied Geophysical Engineering, where analysing field data was the core of the work, and carried that habit into operations, building my own Power BI dashboards and Excel models along the way. I'm now completing the <b>Full-Stack Data Analytics programme at RevoU</b> to put a formal foundation under that experience, and I'm looking for a <b>Data Analyst</b> role.</p>
-
+    <p class="about-text reveal" style="margin-bottom:0">Results-oriented, data-driven professional with <b>4+ years in automotive after-sales</b>, analyzing the performance of <b>88 Honda authorized workshops</b> across Lampung at Tunas Honda, a Honda main dealer. Experienced in building Power BI dashboards, KNIME workflows and Excel models that management uses to track <b>100K+ monthly service entries</b>, set annual targets and spot at-risk workshops early, and contributed to growing digital free-service claims <b>from 9% to 92%</b> in two years. Strengthened SQL, Python and Tableau skills through <b>RevoU's Full-Stack Data Analytics program</b>. Passionate about turning operational data into clear, practical decisions, and eager to bring that business sense to a <b>Data Analyst</b> role; open to relocation.</p>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
+<!-- SKILLS -->
+<section id="skills">
   <div class="container">
-    <div class="head reveal"><h2><span class="grad-text">Education</span></h2><div class="bar"></div><p>Academic background and certifications.</p></div>
-    <div class="edu">
-      <div class="card reveal">
-        <div class="edu-top"><div class="badge">UNILA</div><h3>University of Lampung</h3></div>
-        <div class="deg">Bachelor's Degree in Geophysical Engineering</div>
-        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2016 – 2021</div>
-        <ul>
-          <li>Thesis: Geothermal reservoir characterisation using fluid geochemistry — analysed 15 fluid samples with geochemical diagrams and geothermometers, classified reservoir conditions and validated estimates against producing-field data</li>
-          <li>Publication presenter, Joint Convention Yogyakarta (2019) — geophysical data analysis</li>
-          <li>Assistant Lecturer, Geothermal Exploration (2020)</li>
-          <li>Top 10 finalist, IUGC Geoposter Competition by ITB (2018) · PPA Scholarship (2018)</li>
-        </ul>
-      </div>
-      <div class="card reveal">
-        <div class="edu-top"><div class="badge">RevoU</div><h3>RevoU</h3></div>
-        <div class="deg">Full-Stack Data Analytics Program</div>
-        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>June 2026 – Oct 2026</div>
-        <ul>
-          <li>Business problem framing, statistics &amp; hypothesis testing</li>
-          <li>SQL on BigQuery (CTEs, window functions, cohort analysis), Python (pandas)</li>
-          <li>Dashboarding in Tableau &amp; Power BI, data storytelling, end-to-end capstone (DEEPP)</li>
-        </ul>
-      </div>
+    <div class="head reveal"><h2><span class="grad-text">Skills</span></h2><div class="bar"></div><p>Tools, analytical methods and ways of working.</p></div>
+    <h3 class="sub reveal" style="margin-top:0">Technical Skills</h3>
+    <div class="skills">
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></div><h4>Python</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div><h4>SQL</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.654.174V2.377H9.682v.58h1.972V5.16h.696V2.957h1.97v-.58h-1.97V.174h-.348zm6.03 2.262l-.002 1.623v1.623h-2.957v.927h2.957v3.188H18.725l.011-1.582.02-1.576 1.465-.02 1.46-.01v-.927H18.728V2.436h-.522zm-12.407.06V5.686H2.291v.925H5.277V9.801h.985V6.61h3.013v-.925H6.262V2.496H5.77zm6.086 5.27v3.593H8.06v1.188h3.304v3.596h1.28v-3.596H15.953v-1.188H12.643V7.766h-.637zm9.721 1.55v2.221h-2.012v.811h2.012v2.261h.887v-2.261H24v-.811h-2.029V9.317h-.422zm-19.111.131V11.621H0v.621H1.973v2.194H2.64v-2.194h2v-.62H2.609V9.446h-.318zm15.709 4.516v3.254h-3.016v.927h3.016v3.217h1.072v-3.216H21.74v-.928H18.754v-3.254h-.533zm-12.463.008v3.246H2.262v.928h2.957v3.189H6.32v-3.189h2.955v-.928H6.32V13.97h-.55zm6.316 4.578l.002 1.103v1.1H9.566v.812h1.971v2.262h.928l.012-1.119.017-1.143H14.463v-.812h-2V18.549h-.465z"/></svg></div><h4>Tableau</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="5" height="9" rx="1.2" opacity=".55"/><rect x="9.5" y="7.5" width="5" height="14.5" rx="1.2" opacity=".78"/><rect x="16" y="2" width="5" height="20" rx="1.2"/></svg></div><h4>Power BI</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="13" height="18" rx="1.5" fill="currentColor" opacity=".45"/><path d="M14 7h5M14 11h5M14 15h5" stroke="var(--card)" stroke-width="1.4"/><rect x="2" y="6" width="12" height="12" rx="1.5" fill="currentColor"/><path d="M5 9l5 6M10 9l-5 6" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg></div><h4>Excel</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg></div><h4>Google Sheets</h4></div>
+      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m10.445 21.393 11.54-.775.451.775zM7.56 11.113l-5.092 10.28h-.904Zm10.427 2.652-6.43-9.505.452-.775zm2.57 5.216.627.896-10.652.707zM4.655 20.976l-1.143.09 4.709-9.488Zm6.173-14.667.476-.998 5.984 8.782zm8.272 11.055.847 1.015-8.685 1.413zM6.76 20.532l-1.32.224 3.11-8.162Zm3.406-12.189.472-1.207 5.558 6.732Zm7.403 7.54 1.13 1.016-6.378 1.98zm-8.759 4.08-1.46.448 1.46-6.44zm.8-9.539.363-1.48 4.868 4.477zm-.348 9.402v-7.851l.244-1.085 6.864 3.926.834.758L10.34 19.5zM12.01 1.694 0 22.306h24z"/></svg></div><h4>KNIME</h4></div>
     </div>
-
-    <h3 class="sub reveal">Certifications</h3>
-    <div class="certs">
-      <div class="card cert reveal"><div class="badge">BI</div><h4>Power BI Training</h4><div class="is">Tunas Group</div><span class="yr">2024</span></div>
-      <div class="card cert reveal"><div class="badge">DS</div><h4>Applied Data Science &amp; Business</h4><div class="is">Astra Honda Motor</div><span class="yr">2023</span></div>
-      <div class="card cert reveal"><div class="badge">KN</div><h4>Data Analytics with KNIME</h4><div class="is">Iykra</div><span class="yr">2022</span></div>
-      <div class="card cert reveal"><div class="badge">Py</div><h4>Big Data Using Python</h4><div class="is">Kominfo</div><span class="yr">2021</span></div>
+    <h3 class="sub reveal">Analytical Skills</h3>
+    <div class="soft reveal">
+      <span>Statistics</span><span>Data Cleaning</span><span>Exploratory Data Analysis</span><span>Dashboard Development</span><span>KPI Monitoring &amp; Reporting</span>
+    </div>
+    <h3 class="sub reveal">Soft Skills</h3>
+    <div class="soft reveal">
+      <span>Stakeholder Communication</span><span>Data Storytelling</span><span>Problem Solving</span><span>Coaching</span><span>Leadership</span><span>Cross-Functional Collaboration</span>
+    </div>
+    <h3 class="sub reveal">Languages</h3>
+    <div class="soft reveal">
+      <span>Indonesian (Native)</span><span>English</span>
     </div>
   </div>
 </section>
@@ -401,14 +402,42 @@ body.detail-open #main,body.detail-open nav{display:none}
     <div class="timeline">
       <div class="card job reveal">
         <div class="job-h"><h3>Service Engineer Supervisor<br><span class="grad-text" style="font-size:1rem">Data &amp; Business Performance Analyst</span></h3>
-          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2022 – Present</div></div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Apr 2022 – Present</div></div>
         <div class="co">PT. Tunas Dwipa Matra</div>
         <ul>
-          <li>Migrated monthly performance reporting from Excel to a Power BI dashboard (star schema, DAX) tracking 100K+ monthly service unit entries, adding working-day-adjusted MoM and YoY comparisons, a run-rate month-end outlook and regency-to-dealer drill-down.</li>
+          <li>Supervise and develop a network of 88 Honda authorized workshops (AHASS) in Lampung, covering KPI monitoring, performance analysis and workshop coaching.</li>
+          <li>Migrated monthly performance reporting from Excel to a Power BI dashboard (DAX) tracking 100K+ service entries a month, with month-over-month and year-over-year comparisons adjusted for working days, month-end projections and drill-down from regency to dealer.</li>
           <li>Built a KNIME workflow mapping customer residence vs service location across 229 sub-districts, and used demand and penetration gaps to set annual service targets per sub-district and dealer.</li>
           <li>Monitored adoption of the Motoran customer app across the network and coached low-adoption workshops; digital free-service claim share grew from 9% to 92% (FY2023–FY2025) and realized service bookings reached 138% of target YTD 2026.</li>
           <li>Designed a Balanced Scorecard model scoring every workshop on result (lag) and activity (lead) indicators, used by management as an early-warning tool to flag at-risk workshops.</li>
-          <li>Presented monthly performance insights to management and coached workshop heads to turn KPI gaps into concrete action plans.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">Organizational Experience</h3>
+    <div class="timeline">
+      <div class="card job reveal">
+        <div class="job-h"><h3>Head of Multimedia Information Division</h3><div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jan 2018 – Dec 2019</div></div>
+        <div class="co">Hima TG Bhuwana UNILA</div>
+        <ul>
+          <li>Led the multimedia division in planning and publishing digital content and website updates for organizational events and programs.</li>
+          <li>Analyzed website and social media engagement data to identify content trends, using the insights to prioritize formats and posting schedules.</li>
+        </ul>
+      </div>
+      <div class="card job reveal">
+        <div class="job-h"><h3>Creative Relations Staff</h3><div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jan 2018 – Dec 2020</div></div>
+        <div class="co">HMGZine</div>
+        <ul>
+          <li>Designed publication materials and layouts for each edition of the student magazine.</li>
+          <li>Contributed to editorial brainstorming sessions to develop edition themes based on reader feedback.</li>
+        </ul>
+      </div>
+      <div class="card job reveal">
+        <div class="job-h"><h3>Editor in Chief</h3><div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jan 2019 – Dec 2020</div></div>
+        <div class="co">UKM Kristen UNILA</div>
+        <ul>
+          <li>Directed editorial planning, content review and publication for each release edition of the organization's media.</li>
+          <li>Tracked publication timelines and output per edition, and reported progress and content quality to the organization's board.</li>
         </ul>
       </div>
     </div>
@@ -424,22 +453,40 @@ body.detail-open #main,body.detail-open nav{display:none}
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="alt">
+<!-- EDUCATION -->
+<section id="education" class="alt">
   <div class="container">
-    <div class="head reveal"><h2>Technical <span class="grad-text">Skills</span></h2><div class="bar"></div></div>
-    <div class="skills">
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></div><h4>Python</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div><h4>SQL</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.654.174V2.377H9.682v.58h1.972V5.16h.696V2.957h1.97v-.58h-1.97V.174h-.348zm6.03 2.262l-.002 1.623v1.623h-2.957v.927h2.957v3.188H18.725l.011-1.582.02-1.576 1.465-.02 1.46-.01v-.927H18.728V2.436h-.522zm-12.407.06V5.686H2.291v.925H5.277V9.801h.985V6.61h3.013v-.925H6.262V2.496H5.77zm6.086 5.27v3.593H8.06v1.188h3.304v3.596h1.28v-3.596H15.953v-1.188H12.643V7.766h-.637zm9.721 1.55v2.221h-2.012v.811h2.012v2.261h.887v-2.261H24v-.811h-2.029V9.317h-.422zm-19.111.131V11.621H0v.621H1.973v2.194H2.64v-2.194h2v-.62H2.609V9.446h-.318zm15.709 4.516v3.254h-3.016v.927h3.016v3.217h1.072v-3.216H21.74v-.928H18.754v-3.254h-.533zm-12.463.008v3.246H2.262v.928h2.957v3.189H6.32v-3.189h2.955v-.928H6.32V13.97h-.55zm6.316 4.578l.002 1.103v1.1H9.566v.812h1.971v2.262h.928l.012-1.119.017-1.143H14.463v-.812h-2V18.549h-.465z"/></svg></div><h4>Tableau</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="5" height="9" rx="1.2" opacity=".55"/><rect x="9.5" y="7.5" width="5" height="14.5" rx="1.2" opacity=".78"/><rect x="16" y="2" width="5" height="20" rx="1.2"/></svg></div><h4>Power BI</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="13" height="18" rx="1.5" fill="currentColor" opacity=".45"/><path d="M14 7h5M14 11h5M14 15h5" stroke="var(--card)" stroke-width="1.4"/><rect x="2" y="6" width="12" height="12" rx="1.5" fill="currentColor"/><path d="M5 9l5 6M10 9l-5 6" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg></div><h4>Excel</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg></div><h4>Google Sheets</h4></div>
-      <div class="skill reveal"><div class="logo-ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m10.445 21.393 11.54-.775.451.775zM7.56 11.113l-5.092 10.28h-.904Zm10.427 2.652-6.43-9.505.452-.775zm2.57 5.216.627.896-10.652.707zM4.655 20.976l-1.143.09 4.709-9.488Zm6.173-14.667.476-.998 5.984 8.782zm8.272 11.055.847 1.015-8.685 1.413zM6.76 20.532l-1.32.224 3.11-8.162Zm3.406-12.189.472-1.207 5.558 6.732Zm7.403 7.54 1.13 1.016-6.378 1.98zm-8.759 4.08-1.46.448 1.46-6.44zm.8-9.539.363-1.48 4.868 4.477zm-.348 9.402v-7.851l.244-1.085 6.864 3.926.834.758L10.34 19.5zM12.01 1.694 0 22.306h24z"/></svg></div><h4>KNIME</h4></div>
+    <div class="head reveal"><h2><span class="grad-text">Education</span></h2><div class="bar"></div><p>Academic background and certifications.</p></div>
+    <div class="edu">
+      <div class="card reveal">
+        <div class="edu-top"><div class="badge">RevoU</div><h3>RevoU</h3></div>
+        <div class="deg">Full-Stack Data Analytics</div>
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 2026 – Oct 2026</div>
+        <ul>
+          <li>Learned end-to-end data analytics, from statistics and data cleaning to analysis, visualization and data storytelling.</li>
+          <li>Used SQL Query / BigQuery, Python, Power BI and Tableau, including AI-assisted analysis and workflow automation, through hands-on business case assignments.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="edu-top"><div class="badge">UNILA</div><h3>University of Lampung</h3></div>
+        <div class="deg">Bachelor of Geophysical Engineering · GPA 3.35/4.00</div>
+        <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Aug 2016 – Jun 2021</div>
+        <ul>
+          <li>Thesis: “Geothermal Reservoir Characterization Using Fluid Geochemistry of Manifestations and Wells”. Analyzed 15 fluid samples using geochemical diagrams and geothermometers to estimate reservoir temperatures, classified 4 as good and 5 as moderate reservoirs, and validated the estimates against producing-field data.</li>
+          <li>Presented geophysical data analysis research at the Joint Convention Yogyakarta (2019).</li>
+          <li>Assistant Lecturer, Geothermal Exploration (2020); PPA Scholarship Awardee (2018).</li>
+        </ul>
+      </div>
     </div>
-    <h3 class="sub reveal">Soft Skills</h3>
-    <div class="soft reveal">
-      <span>Stakeholder Communication</span><span>Data Storytelling</span><span>Problem Solving</span><span>Coaching</span><span>Leadership</span><span>Cross-Functional Collaboration</span>
+
+    <h3 class="sub reveal">Certifications</h3>
+    <div class="certs">
+      <div class="card cert reveal"><div class="badge">RU</div><h4>RevoU Full-Stack Data Analytics</h4><div class="is">RevoU (PT Revolusi Cita Edukasi)</div><span class="yr">Oct 2026</span></div>
+      <div class="card cert reveal"><div class="badge">BI</div><h4>Power BI Training</h4><div class="is">Tunas Group</div><span class="yr">Jan 2024</span></div>
+      <div class="card cert reveal"><div class="badge">AHM</div><h4><a href="https://drive.google.com/file/d/1DEK3OBFUDsenHRpuXUlvU2jYVGQXC5Ub/view?usp=sharing" target="_blank" rel="noopener" class="cert-link">Assessor Network Operational Standard ↗</a></h4><div class="is">Astra Honda Motor</div><span class="yr">Sep 2023</span></div>
+      <div class="card cert reveal"><div class="badge">DS</div><h4>Applied Data Science &amp; Business Training</h4><div class="is">Astra Honda Motor</div><span class="yr">Jan 2023</span></div>
+      <div class="card cert reveal"><div class="badge">KN</div><h4><a href="https://drive.google.com/file/d/1KlHI3ZlcUAjzZCFNdKlGGmH7mjsys-vh/view?usp=drive_link" target="_blank" rel="noopener" class="cert-link">Data Analytics with KNIME Training ↗</a></h4><div class="is">Iykra</div><span class="yr">Apr 2022</span></div>
+      <div class="card cert reveal"><div class="badge">Py</div><h4>Big Data Using Python</h4><div class="is">Kominfo</div><span class="yr">Aug 2021</span></div>
     </div>
   </div>
 </section>
@@ -451,7 +498,7 @@ body.detail-open #main,body.detail-open nav{display:none}
       <div>
         <h3>Get In <span class="grad-text">Touch</span></h3>
         <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:igorelindo87@gmail.com">igorelindo87@gmail.com</a></div>
-        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Bandar Lampung, Indonesia</div>
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Lampung, Indonesia</div>
       </div>
       <div>
         <h3>Connect <span class="grad-text">With Me</span></h3>
@@ -482,9 +529,12 @@ body.detail-open #main,body.detail-open nav{display:none}
         <div class="d-img" id="dImg"></div>
         <div class="card d-info">
           <h3>Project Details</h3>
+          <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span><b>Role:</b> <span id="dRole"></span></span></div>
           <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><b>Period:</b> <span id="dPeriod"></span></span></div>
           <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>Team:</b> <span id="dTeam"></span></span></div>
           <div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg><span><b>Tools:</b> <span id="dTools"></span></span></div>
+          <div class="d-resp"><h4>Responsibilities</h4><div id="dResp"></div></div>
+          <div class="d-resp"><h4>Scope</h4><div class="d-scope" id="dScope"></div></div>
           <p class="disc" id="dDisc"></p>
         </div>
       </div>
@@ -513,131 +563,355 @@ const ICO = {
   arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 };
 const projects = [
-  { id:"deepp", featured:true, cat:"Capstone · DEEPP",
-    title:"The Win-Rate Drop That Never Happened — B2B Sales Pipeline Analysis",
-    short:"Management saw win rate fall from 82% to 60% and was weighing extra headcount. I analysed 8,800 CRM opportunities and showed the drop was a reading error — fixing the real pattern is worth about $1.26M without growing the team.",
-    kpis:[["8,800","CRM opportunities"],["$1.26M","Opportunity sized"],["0","Extra headcount needed"]],
-    tags:["Python","Power BI","Google Sheets","Hypothesis Testing"],
-    tools:"Python (pandas, matplotlib), Power BI (DAX), Google Sheets",
-    period:"Aug – Oct 2026", team:"Individual", img:"images/deepp.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://drive.google.com/file/d/14uFagsaBlPlWRaQmS7qLks6-09P3OE3U/view",ico:"slides"},
-           {label:"Dashboard",url:"https://app.powerbi.com/view?r=eyJrIjoiYjUzMDQyZmUtMGQyOS00Njk0LWEzMjMtNzJlMzJiNjIyYTU4IiwidCI6ImE0ZWJlNDI1LTQ5MjUtNDhlZi05OGViLWUxMWRiNWQ4NDI3ZSIsImMiOjEwfQ%3D%3D",ico:"dash"},
-           {label:"Notebook",url:"https://colab.research.google.com/drive/1gxBMiP_uaJWWRgaJmUB0CO9v-VhFUN7x?usp=sharing",ico:"code"}],
-    background:"Vantage Hardware Co., a B2B computer hardware seller with 30 sales agents across 3 regions, saw its quarterly win rate fall from <b>82.1% to 60.3%</b> during 2017. Management was considering adding headcount and wanted to know the cause first.",
-    objective:"Lift win rate from about 61% to at least <b>70% within two quarters</b> without growing the 30-person sales team — and before that, confirm whether the decline is real.",
-    method:[
-      "<b>Data cleaning:</b> prepared 8,800 opportunities across 4 tables in Python — date casting, typo standardisation, flagging unknown accounts, and reviewing IQR outliers.",
-      "<b>Hypothesis testing:</b> built an issue tree and tested four hypotheses (capacity, speed, customer mix, timing) using equal, full-period comparisons.",
-      "<b>Dashboarding:</b> built a Power BI dashboard with drill-down from region to manager to agent so every number can be checked.",
-      "<b>Prioritisation:</b> ranked recommendations by impact, with an owner and a timeline for each."],
-    result:[
-      "<b>No real decline:</b> the first “quarter” held only March. Measured by full quarter, win rate is steady at about 61%.",
-      "<b>Timing pattern:</b> the last month of every quarter wins 78–83%, other months only 49–57% — in every region and for every manager.",
-      "<b>Capacity, speed and customer mix</b> were not supported once re-tested on equal periods.",
-      "<b>Recommendations:</b> report win rate by full quarter, close the mid-quarter gap (to 69.8% win rate, about <b>+$1.26M</b> over three quarters), clean the stale open pipeline, and tier products by revenue."] },
-
-  { id:"ubp", cat:"Business Understanding",
-    title:"Structured Business Analysis: Corporate Segment Profit Decline",
-    short:"Framed a <b>13.6% profit decline</b> with stakeholder mapping, a SMART problem statement, an issue tree and prioritised hypotheses.",
-    tags:["Issue Tree","DARCI","SMART","Hypothesis"],
-    tools:"Google Slides (issue tree, DARCI, SMART, OBIPR)",
-    period:"Jul 2026", team:"Individual", img:"images/ubp.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1q8_rZY95xOq-wyh_4BtiXmdzp3XR6arsubQ4ffBDtic/edit",ico:"slides"}],
-    background:"RevoShion's total sales grew <b>20.4%</b> year on year, yet profit in its Corporate segment fell <b>13.6%</b>. Rising sales with falling profit signals margin erosion that could spread to the rest of the business.",
-    objective:"Restore Corporate segment profit growth to <b>at least +10% year on year within two quarters</b>, without reversing the segment's sales growth.",
-    method:[
-      "<b>Stakeholder mapping (DARCI):</b> identified the decider, accountable owners and who needs to be consulted or informed.",
-      "<b>SMART problem statement:</b> turned a vague concern into a specific, measurable and time-bound question.",
-      "<b>Issue tree:</b> split the decline into margin compression and cost-to-serve, then broke each into testable causes.",
-      "<b>Hypotheses and metrics:</b> prioritised each hypothesis and defined the metrics needed to prove or reject it."],
-    result:[
-      "<b>High priority:</b> deeper discounts on Corporate orders and a sales mix shifting to low-margin products.",
-      "<b>Medium priority:</b> rising cost-to-serve and a customer mix skewed to low-margin accounts.",
-      "<b>Recommendations:</b> discount limits with manager approval, tiered account pricing, revisiting low-margin bundles, renegotiating shipping, and a monthly profit-health review owned by Sales and Finance."] },
-
-  { id:"stats", cat:"Statistics",
-    title:"Business Evaluation: TokoBli Campaign Analysis",
-    short:"Evaluated three twin-date campaigns and proved a new product page lifts transaction value by <b>11.3%</b> with an A/B test.",
-    tags:["Descriptive Stats","IQR","A/B Test","t-test"],
-    tools:"Google Sheets",
-    period:"Jul 2026", team:"Individual", img:"images/stats.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1bTD8QjNG0cS6g7KrJ0Vy_PY5WmQD8Seh5noeJ4Pa4Y0/edit",ico:"slides"}],
-    background:"TokoBli, an e-commerce platform, ran three twin-date campaigns in 2023 (10/10, 11/11 and 12/12) with 10,159 transactions across 15 product categories.",
-    objective:"Find out how TokoBli can <b>increase total revenue in its next twin-date campaign</b>, based on how the 2023 campaigns performed.",
-    method:[
-      "<b>Data cleaning:</b> removed an empty column and 5 duplicate rows, filled blanks with medians, and fixed data types.",
-      "<b>Outlier handling:</b> removed 12 revenue outliers with the IQR method, leaving 10,142 rows.",
-      "<b>Descriptive analysis:</b> compared revenue and revenue per rupiah of discount by campaign and by category.",
-      "<b>A/B test:</b> two-sample t-test (unequal variances, α = 0.05) comparing the old and new product page."],
-    result:[
-      "<b>Two different winners:</b> 11/11 brought the most revenue (Rp 16.62B), while 12/12 was the most efficient at 58.5 revenue per Rp 1 of discount.",
-      "<b>Men's Fashion</b> led all categories at Rp 14.6B while spending only 0.86% of its revenue on discounts.",
-      "<b>New product page:</b> mean transaction value rose <b>11.3%</b> (p &lt; 0.0001).",
-      "<b>Recommendations:</b> roll out the new page, use 12/12's lean discounting as the benchmark, and set discount allocation per campaign."] },
-
-  { id:"sql", cat:"SQL",
-    title:"RevoGrocers Sales Performance: 9 Business Questions in BigQuery",
-    short:"Answered 9 business questions on a <b>7-table</b> grocery database with JOINs, CTEs and window functions.",
-    tags:["SQL","BigQuery","CTE","Window Functions"],
-    tools:"SQL (Google BigQuery)",
-    period:"Aug 2026", team:"Individual", img:"images/sql.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1zzNC8bXSfEVNN55tyrj2ntvJjGFTYdJD-7iuMQUlUbM/edit?usp=sharing",ico:"slides"}],
-    background:"RevoGrocers, a grocery retailer, keeps its sales data in a 7-table database (sales, customers, products, categories, cities, countries, employees) and needed a clear read on what drives revenue.",
-    objective:"Answer <b>9 business questions</b> on revenue, pricing, customers and loyalty to guide category, pricing and customer strategy.",
-    method:[
-      "<b>Data validation:</b> checked row counts, categories and the price column, then applied one revenue formula: Quantity × Price × (1 − Discount).",
-      "<b>JOIN and GROUP BY</b> for revenue, units and unique customers per category.",
-      "<b>CTEs and subqueries</b> for contribution percentages and repeat purchase rate.",
-      "<b>Window functions:</b> RANK() to find the top customer and SUM() OVER() for their running total."],
-    result:[
-      "<b>Volume, not price:</b> the top 4 categories (Confections, Meat, Poultry, Cereals) rank the same on revenue and units sold.",
-      "<b>Grain</b> has the highest unit price and the lowest volume — a possible price barrier.",
-      "<b>Loyalty is already high</b> (93.68–99.85% repeat rate), so the growth lever is spend per customer, not new buyers.",
-      "<b>Recommendations:</b> protect top categories, test Grain pricing or bundles, drive cross-selling, and spread loyalty beyond a few heavy spenders."] },
-
-  { id:"python", cat:"Python",
-    title:"RevoBank Customer Segmentation: Data Cleaning, EDA and RFM",
-    short:"Cleaned 6 months of credit-card data and segmented <b>1,938 customers</b> with RFM — 42% of customers drive only 2.4% of revenue.",
-    tags:["Python","pandas","EDA","RFM"],
-    tools:"Python (pandas, numpy, matplotlib) in Google Colab",
-    period:"Aug – Sep 2026", team:"Individual", img:"images/python.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://docs.google.com/presentation/d/1uD3S4rjBCF3oR2XugfUoZDDaCl8LRBzs/edit?usp=sharing",ico:"slides"},
-           {label:"Notebook",url:"https://colab.research.google.com/drive/1H88hse6GKrycn0HTWDZLgcHeXJKcdYG6?usp=sharing",ico:"code"}],
-    background:"RevoBank wants its existing credit-card customers to transact more. The data covered a card table (5,599 rows) and a user table (2,000 rows) over 6 months.",
-    objective:"Identify <b>which customers to grow, which to win back, and which to deprioritise</b>, so marketing budget goes where it pays off.",
-    method:[
-      "<b>Data cleaning:</b> fixed money and date types, standardised card brands, removed 31 duplicates and 25 unusable cards, leaving 5,531 usable cards.",
-      "<b>Feature engineering:</b> added age at cutoff, a retired flag and debt-to-income ratio (DTI).",
-      "<b>EDA:</b> measured net profit and fraud, and profiled spending by card brand, retirement status and credit score.",
-      "<b>RFM segmentation:</b> scored customers on recency, frequency and monetary value, with non-transacting customers set aside first."],
-    result:[
-      "<b>Rp 5.64B</b> net profit over 6 months; fraud was only 0.263% by volume yet consumed about 17.6% of gross MDR profit.",
-      "<b>Growth-Ready</b> segments are 20.8% of customers but drive 44.7% of revenue.",
-      "<b>Inactive</b> customers are 42.1% of the base but bring only 2.4% of revenue.",
-      "<b>Recommendations:</b> upsell 260 Growth-Ready clients, win back 227 At Risk customers one-on-one, and use only low-cost nudges for the 816 inactive ones."] },
-
-  { id:"tableau", cat:"Data Visualisation",
-    title:"Revo Hospital Financial Performance Dashboard",
-    short:"Tableau dashboard that located <b>Rp 14.5 billion</b> of pending hospital revenue by department and patient type.",
-    tags:["Tableau","LOD","Dashboard Design"],
-    tools:"Tableau Public (relationships, LOD expressions, table calculations, maps)",
-    period:"Sep 2026", team:"Individual", img:"images/tableau.png", disc:DISC_REVOU,
-    links:[{label:"Open Slides",url:"https://drive.google.com/file/d/1Ehe0HD16nd9rekmN5rKQ4ZM8Y2-UbYiF/view",ico:"slides"},
-           {label:"Dashboard",url:"https://public.tableau.com/views/DATAVIZ_JUN26_Igo_Relindo_Intermediate/Dashboard1",ico:"dash"}],
-    background:"Revo Hospital runs 8 branches and 8 departments. Its Finance Lead needed a monthly view of where revenue collection was weakest, using billing and admission data from Jan 2024 to Dec 2025.",
-    objective:"Build an <b>operational dashboard</b> that shows where billing follow-up should go each month.",
-    method:[
-      "<b>Data model:</b> Tableau relationships instead of physical joins, joined on patient ID (1,470 of 1,800 patients share a name).",
-      "<b>Metrics:</b> net revenue, collection rate, pending revenue, out-of-pocket ratio and monthly trend.",
-      "<b>Chart choices:</b> KPI cards, sorted bars, Paid vs Pending trend, histogram of patient burden and a branch map.",
-      "<b>LOD expression</b> to keep each department's full-period baseline visible while filters change."],
-    result:[
-      "<b>Rp 14.5B (14%)</b> of net revenue is still pending.",
-      "<b>Cardiology</b> has the lowest collection rate (81.7%); <b>self-pay</b> patients pay only 64.6% vs 87–90% for insured patients.",
-      "<b>Bigger bills are harder to collect</b>, and pending revenue grew as admissions rose; location is not the driver.",
-      "<b>Recommendations:</b> review Cardiology billing, require deposits for self-pay, scale billing capacity with volume, and offer instalments above Rp 20M."] }
+ {
+  "id": "deepp",
+  "featured": true,
+  "cat": "Capstone · DEEPP",
+  "title": "B2B Sales Pipeline Win-Rate Analysis — The Win-Rate Drop That Never Happened",
+  "short": "Analyzed 8,800 CRM sales opportunities and showed that a reported win-rate drop from 82% to 60% was a comparison error, not a real decline — then sized a USD 1.26M opportunity without growing the team.",
+  "kpis": [
+   [
+    "8,800",
+    "CRM opportunities"
+   ],
+   [
+    "USD 1.26M",
+    "Opportunity sized"
+   ],
+   [
+    "0",
+    "Extra headcount needed"
+   ]
+  ],
+  "tags": [
+   "Python",
+   "Power BI",
+   "Google Sheets",
+   "Hypothesis Testing"
+  ],
+  "tools": "Python (pandas), Google Sheets, Power BI (DAX)",
+  "period": "Jun – Oct 2026",
+  "team": "Individual",
+  "img": "images/deepp.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://drive.google.com/file/d/14uFagsaBlPlWRaQmS7qLks6-09P3OE3U/view",
+    "ico": "slides"
+   },
+   {
+    "label": "Dashboard",
+    "url": "https://app.powerbi.com/view?r=eyJrIjoiYjUzMDQyZmUtMGQyOS00Njk0LWEzMjMtNzJlMzJiNjIyYTU4IiwidCI6ImE0ZWJlNDI1LTQ5MjUtNDhlZi05OGViLWUxMWRiNWQ4NDI3ZSIsImMiOjEwfQ%3D%3D",
+    "ico": "dash"
+   },
+   {
+    "label": "Notebook",
+    "url": "https://colab.research.google.com/drive/1gxBMiP_uaJWWRgaJmUB0CO9v-VhFUN7x?usp=sharing",
+    "ico": "code"
+   }
+  ],
+  "background": "Vantage Hardware Co. (a public CRM dataset: 8,800 sales opportunities, 30 agents, 85 accounts) saw its quarterly win rate fall from <b>82.1% to 60.3%</b> during 2017. Management was considering adding headcount and wanted to know the cause first.",
+  "objective": "Lift win rate from about 61% to at least <b>70% within two quarters</b> without growing the 30-person sales team — and before that, confirm whether the decline is real.",
+  "method": [
+   "<b>Data cleaning:</b> prepared 8,800 opportunities across 4 tables in Python — date casting, typo standardisation, flagging unknown accounts, and reviewing IQR outliers.",
+   "<b>Hypothesis testing:</b> built an issue tree and tested four hypotheses (capacity, speed, customer mix, timing) using equal, full-period comparisons.",
+   "<b>Dashboarding:</b> built a Power BI dashboard with drill-down from region to manager to agent so every number can be checked.",
+   "<b>Prioritisation:</b> ranked recommendations by impact, with an owner and a timeline for each."
+  ],
+  "result": [
+   "<b>No real decline:</b> the first “quarter” held only March. Measured by full quarter, win rate is steady at about 61%.",
+   "<b>Timing pattern:</b> win rate of about 50% in months 1 and 2 (49–57%) versus about 80% in month 3 (78–83%) — across every region and every manager.",
+   "<b>Capacity, speed and customer mix</b> were not supported once re-tested on equal periods.",
+   "<b>Recommendations:</b> four prioritized actions presented in a 10-minute stakeholder pitch — report win rate by full quarter, close the mid-quarter gap (to 69.8% win rate, about <b>USD 1.26M</b> over three quarters), clean the stale open pipeline, and tier products by revenue."
+  ],
+  "role": "Solo Data Analyst, end-to-end",
+  "resp": [
+   "Framed the business problem and four testable hypotheses with an issue tree",
+   "Cleaned and joined 4 CRM tables in Python (pandas)",
+   "Ran equal-period hypothesis tests and sized the revenue impact",
+   "Built the interactive Power BI dashboard with region-to-agent drill-down",
+   "Delivered a 10-minute stakeholder pitch with 4 prioritized recommendations"
+  ],
+  "scope": [
+   "8,800 opportunities",
+   "30 agents",
+   "85 accounts",
+   "7 products",
+   "4 tables",
+   "Oct 2016 – Dec 2017 data",
+   "Notebook + dashboard + deck"
+  ]
+ },
+ {
+  "id": "ubp",
+  "cat": "Business Understanding",
+  "title": "Structured Business Analysis: Corporate Segment Profit Decline",
+  "short": "Framed a <b>13.6% profit decline</b> with stakeholder mapping, a SMART problem statement, an issue tree and prioritised hypotheses.",
+  "tags": [
+   "Issue Tree",
+   "DARCI",
+   "SMART",
+   "Hypothesis"
+  ],
+  "tools": "Google Slides (issue tree, DARCI, SMART, OBIPR)",
+  "period": "Jul 2026",
+  "team": "Individual",
+  "img": "images/ubp.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://docs.google.com/presentation/d/1q8_rZY95xOq-wyh_4BtiXmdzp3XR6arsubQ4ffBDtic/edit",
+    "ico": "slides"
+   }
+  ],
+  "background": "RevoShion's total sales grew <b>20.4%</b> year on year, yet profit in its Corporate segment fell <b>13.6%</b>. Rising sales with falling profit signals margin erosion that could spread to the rest of the business.",
+  "objective": "Restore Corporate segment profit growth to <b>at least +10% year on year within two quarters</b>, without reversing the segment's sales growth.",
+  "method": [
+   "<b>Stakeholder mapping (DARCI):</b> identified the decider, accountable owners and who needs to be consulted or informed.",
+   "<b>SMART problem statement:</b> turned a vague concern into a specific, measurable and time-bound question.",
+   "<b>Issue tree:</b> split the decline into margin compression and cost-to-serve, then broke each into testable causes.",
+   "<b>Hypotheses and metrics:</b> prioritised each hypothesis and defined the metrics needed to prove or reject it."
+  ],
+  "result": [
+   "<b>High priority:</b> deeper discounts on Corporate orders and a sales mix shifting to low-margin products.",
+   "<b>Medium priority:</b> rising cost-to-serve and a customer mix skewed to low-margin accounts.",
+   "<b>Recommendations:</b> discount limits with manager approval, tiered account pricing, revisiting low-margin bundles, renegotiating shipping, and a monthly profit-health review owned by Sales and Finance."
+  ],
+  "role": "Data Analyst, problem framing",
+  "resp": [
+   "Mapped stakeholders and decision rights with DARCI",
+   "Wrote a SMART problem statement for the Corporate segment",
+   "Built the issue tree and prioritized hypotheses",
+   "Defined the metrics to prove or reject each hypothesis",
+   "Drafted recommendations ranked by impact"
+  ],
+  "scope": [
+   "1 business segment",
+   "2 issue-tree branches",
+   "4 prioritized hypotheses",
+   "Presentation deck"
+  ]
+ },
+ {
+  "id": "stats",
+  "cat": "Statistics",
+  "title": "Business Evaluation: TokoBli Campaign Analysis",
+  "short": "Evaluated three twin-date campaigns and proved a new product page lifts transaction value by <b>11.3%</b> with an A/B test.",
+  "tags": [
+   "Descriptive Stats",
+   "IQR",
+   "A/B Test",
+   "t-test"
+  ],
+  "tools": "Google Sheets",
+  "period": "Jul 2026",
+  "team": "Individual",
+  "img": "images/stats.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://docs.google.com/presentation/d/1bTD8QjNG0cS6g7KrJ0Vy_PY5WmQD8Seh5noeJ4Pa4Y0/edit",
+    "ico": "slides"
+   }
+  ],
+  "background": "TokoBli, an e-commerce platform, ran three twin-date campaigns in 2023 (10/10, 11/11 and 12/12) with 10,159 transactions across 15 product categories.",
+  "objective": "Find out how TokoBli can <b>increase total revenue in its next twin-date campaign</b>, based on how the 2023 campaigns performed.",
+  "method": [
+   "<b>Data cleaning:</b> removed an empty column and 5 duplicate rows, filled blanks with medians, and fixed data types.",
+   "<b>Outlier handling:</b> removed 12 revenue outliers with the IQR method, leaving 10,142 rows.",
+   "<b>Descriptive analysis:</b> compared revenue and revenue per rupiah of discount by campaign and by category.",
+   "<b>A/B test:</b> two-sample t-test (unequal variances, α = 0.05) comparing the old and new product page."
+  ],
+  "result": [
+   "<b>Two different winners:</b> 11/11 brought the most revenue (Rp 16.62B), while 12/12 was the most efficient at 58.5 revenue per Rp 1 of discount.",
+   "<b>Men's Fashion</b> led all categories at Rp 14.6B while spending only 0.86% of its revenue on discounts.",
+   "<b>New product page:</b> mean transaction value rose <b>11.3%</b> (p &lt; 0.0001).",
+   "<b>Recommendations:</b> roll out the new page, use 12/12's lean discounting as the benchmark, and set discount allocation per campaign."
+  ],
+  "role": "Data Analyst, cleaning to recommendation",
+  "resp": [
+   "Cleaned the dataset and handled outliers with the IQR method",
+   "Compared campaign and category performance with descriptive statistics",
+   "Designed and ran the A/B test (two-sample t-test)",
+   "Translated results into campaign and discount recommendations"
+  ],
+  "scope": [
+   "10,159 transactions",
+   "3 campaigns",
+   "15 categories",
+   "Oct – Dec 2023 data",
+   "1,000 A/B observations",
+   "Spreadsheet + deck"
+  ]
+ },
+ {
+  "id": "sql",
+  "cat": "SQL",
+  "title": "RevoGrocers Sales Performance: 9 Business Questions in BigQuery",
+  "short": "Answered 9 business questions on a <b>7-table</b> grocery database with JOINs, CTEs and window functions.",
+  "tags": [
+   "SQL",
+   "BigQuery",
+   "CTE",
+   "Window Functions"
+  ],
+  "tools": "SQL (Google BigQuery)",
+  "period": "Aug 2026",
+  "team": "Individual",
+  "img": "images/sql.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://docs.google.com/presentation/d/1zzNC8bXSfEVNN55tyrj2ntvJjGFTYdJD-7iuMQUlUbM/edit?usp=sharing",
+    "ico": "slides"
+   }
+  ],
+  "background": "RevoGrocers, a grocery retailer, keeps its sales data in a 7-table database (sales, customers, products, categories, cities, countries, employees) and needed a clear read on what drives revenue.",
+  "objective": "Answer <b>9 business questions</b> on revenue, pricing, customers and loyalty to guide category, pricing and customer strategy.",
+  "method": [
+   "<b>Data validation:</b> checked row counts, categories and the price column, then applied one revenue formula: Quantity × Price × (1 − Discount).",
+   "<b>JOIN and GROUP BY</b> for revenue, units and unique customers per category.",
+   "<b>CTEs and subqueries</b> for contribution percentages and repeat purchase rate.",
+   "<b>Window functions:</b> RANK() to find the top customer and SUM() OVER() for their running total."
+  ],
+  "result": [
+   "<b>Volume, not price:</b> the top 4 categories (Confections, Meat, Poultry, Cereals) rank the same on revenue and units sold.",
+   "<b>Grain</b> has the highest unit price and the lowest volume — a possible price barrier.",
+   "<b>Loyalty is already high</b> (93.68–99.85% repeat rate), so the growth lever is spend per customer, not new buyers.",
+   "<b>Recommendations:</b> protect top categories, test Grain pricing or bundles, drive cross-selling, and spread loyalty beyond a few heavy spenders."
+  ],
+  "role": "Data Analyst, querying to recommendation",
+  "resp": [
+   "Validated the data and set one consistent revenue formula",
+   "Wrote BigQuery SQL for 9 business questions (JOINs, CTEs, window functions)",
+   "Interpreted results into category, pricing and customer insights",
+   "Wrote recommendations for each finding"
+  ],
+  "scope": [
+   "7-table database",
+   "9 business questions",
+   "SQL queries + deck"
+  ]
+ },
+ {
+  "id": "python",
+  "cat": "Python",
+  "title": "RevoBank Customer Segmentation: Data Cleaning, EDA and RFM",
+  "short": "Cleaned 6 months of credit-card data and segmented <b>1,938 customers</b> with RFM — 42% of customers drive only 2.4% of revenue.",
+  "tags": [
+   "Python",
+   "pandas",
+   "EDA",
+   "RFM"
+  ],
+  "tools": "Python (pandas, numpy, matplotlib) in Google Colab",
+  "period": "Aug – Sep 2026",
+  "team": "Individual",
+  "img": "images/python.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://docs.google.com/presentation/d/1uD3S4rjBCF3oR2XugfUoZDDaCl8LRBzs/edit?usp=sharing",
+    "ico": "slides"
+   },
+   {
+    "label": "Notebook",
+    "url": "https://colab.research.google.com/drive/1H88hse6GKrycn0HTWDZLgcHeXJKcdYG6?usp=sharing",
+    "ico": "code"
+   }
+  ],
+  "background": "RevoBank wants its existing credit-card customers to transact more. The data covered a card table (5,599 rows) and a user table (2,000 rows) over 6 months.",
+  "objective": "Identify <b>which customers to grow, which to win back, and which to deprioritise</b>, so marketing budget goes where it pays off.",
+  "method": [
+   "<b>Data cleaning:</b> fixed money and date types, standardised card brands, removed 31 duplicates and 25 unusable cards, leaving 5,531 usable cards.",
+   "<b>Feature engineering:</b> added age at cutoff, a retired flag and debt-to-income ratio (DTI).",
+   "<b>EDA:</b> measured net profit and fraud, and profiled spending by card brand, retirement status and credit score.",
+   "<b>RFM segmentation:</b> scored customers on recency, frequency and monetary value, with non-transacting customers set aside first."
+  ],
+  "result": [
+   "<b>Rp 5.64B</b> net profit over 6 months; fraud was only 0.263% by volume yet consumed about 17.6% of gross MDR profit.",
+   "<b>Growth-Ready</b> segments are 20.8% of customers but drive 44.7% of revenue.",
+   "<b>Inactive</b> customers are 42.1% of the base but bring only 2.4% of revenue.",
+   "<b>Recommendations:</b> upsell 260 Growth-Ready clients, win back 227 At Risk customers one-on-one, and use only low-cost nudges for the 816 inactive ones."
+  ],
+  "role": "Data Analyst, supporting the Performance Management team",
+  "resp": [
+   "Cleaned and validated card and user tables in Python",
+   "Engineered features: age at cutoff, retired flag, debt-to-income ratio",
+   "Ran EDA on profit, fraud, card brand and credit score",
+   "Built the RFM segmentation and sized each segment",
+   "Wrote targeted recommendations per segment"
+  ],
+  "scope": [
+   "5,599 cards",
+   "2,000 users",
+   "6 months of data",
+   "1,938 customers segmented",
+   "Notebook + deck"
+  ]
+ },
+ {
+  "id": "tableau",
+  "cat": "Data Visualisation",
+  "title": "Revo Hospital Financial Performance Dashboard",
+  "short": "Tableau dashboard that located <b>Rp 14.5 billion</b> of pending hospital revenue by department and patient type.",
+  "tags": [
+   "Tableau",
+   "LOD",
+   "Dashboard Design"
+  ],
+  "tools": "Tableau Public (relationships, LOD expressions, table calculations, maps)",
+  "period": "Sep 2026",
+  "team": "Individual",
+  "img": "images/tableau.png",
+  "disc": DISC_REVOU,
+  "links": [
+   {
+    "label": "Open Slides",
+    "url": "https://drive.google.com/file/d/1Ehe0HD16nd9rekmN5rKQ4ZM8Y2-UbYiF/view",
+    "ico": "slides"
+   },
+   {
+    "label": "Dashboard",
+    "url": "https://public.tableau.com/views/DATAVIZ_JUN26_Igo_Relindo_Intermediate/Dashboard1",
+    "ico": "dash"
+   }
+  ],
+  "background": "Revo Hospital runs 8 branches and 8 departments. Its Finance Lead needed a monthly view of where revenue collection was weakest, using billing and admission data from Jan 2024 to Dec 2025.",
+  "objective": "Build an <b>operational dashboard</b> that shows where billing follow-up should go each month.",
+  "method": [
+   "<b>Data model:</b> Tableau relationships instead of physical joins, joined on patient ID (1,470 of 1,800 patients share a name).",
+   "<b>Metrics:</b> net revenue, collection rate, pending revenue, out-of-pocket ratio and monthly trend.",
+   "<b>Chart choices:</b> KPI cards, sorted bars, Paid vs Pending trend, histogram of patient burden and a branch map.",
+   "<b>LOD expression</b> to keep each department's full-period baseline visible while filters change."
+  ],
+  "result": [
+   "<b>Rp 14.5B (14%)</b> of net revenue is still pending.",
+   "<b>Cardiology</b> has the lowest collection rate (81.7%); <b>self-pay</b> patients pay only 64.6% vs 87–90% for insured patients.",
+   "<b>Bigger bills are harder to collect</b>, and pending revenue grew as admissions rose; location is not the driver.",
+   "<b>Recommendations:</b> review Cardiology billing, require deposits for self-pay, scale billing capacity with volume, and offer instalments above Rp 20M."
+  ],
+  "role": "Dashboard designer and analyst",
+  "resp": [
+   "Defined the audience (Finance Lead) and the metrics that matter",
+   "Built the data model with Tableau relationships on patient ID",
+   "Designed charts and LOD expressions for monthly review",
+   "Wrote insights and prioritized recommendations"
+  ],
+  "scope": [
+   "5 related tables",
+   "8 branches",
+   "8 departments",
+   "Jan 2024 – Dec 2025 data",
+   "Tableau Public dashboard + deck"
+  ]
+ }
 ];
-
 const list = a => Array.isArray(a) ? '<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>' : `<p>${a}</p>`;
 const coverHTML = (p,i,big) => {
   const hs=[72,48,90,60,82];
@@ -685,7 +959,7 @@ function openDetail(id, push){
   if(!document.body.classList.contains('detail-open')) lastScroll = window.scrollY;
   $('dCat').textContent=p.cat; $('dTitle').textContent=p.title;
   $('dImg').innerHTML=imgOrPlaceholder(p);
-  $('dPeriod').textContent=p.period; $('dTeam').textContent=p.team; $('dTools').textContent=p.tools;
+  $('dRole').textContent=p.role; $('dResp').innerHTML=list(p.resp); $('dScope').innerHTML=p.scope.map(x=>`<span>${x}</span>`).join(''); $('dPeriod').textContent=p.period; $('dTeam').textContent=p.team; $('dTools').textContent=p.tools;
   $('dDisc').textContent=p.disc||'';
   $('dBg').innerHTML=list(p.background); $('dObj').innerHTML=list(p.objective);
   $('dMethod').innerHTML=list(p.method); $('dResult').innerHTML=list(p.result);
@@ -727,7 +1001,7 @@ document.getElementById('logo').innerHTML =
 const t1=document.getElementById('typed1'), t2=document.getElementById('typed2'),
       c1=document.getElementById('c1'), c2=document.getElementById('c2');
 const pre="Hi, I'm ", name="Igo Relindo";
-const roles=["Aspiring Data Analyst","KPI & Performance Analyst","Dashboard Builder","Data Storyteller"];
+const roles=["Data Analyst","KPI & Performance Analyst","Dashboard Builder","Data Storyteller"];
 let k=0;
 function typeHello(){
   const full=pre+name;
