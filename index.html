@@ -158,7 +158,9 @@ section{padding:100px 0;position:relative}
 .featured{display:grid;grid-template-columns:1.05fr 1fr;gap:0;padding:0;margin-bottom:34px}
 .featured .cover{min-height:100%;border-radius:0}
 .f-body{padding:36px}
-.tagline{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;background:var(--grad);color:#111;margin-bottom:14px}
+.award{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:10px;background:rgba(255,195,0,.14);border:1.5px solid var(--y2);color:var(--text);font-weight:700;font-size:.95rem;margin:0 0 14px}
+.d-award-wrap{text-align:center;margin:-28px 0 36px}
+.tagline{display:table;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;background:var(--grad);color:#111;margin-bottom:14px}
 .f-body h3{font-size:1.65rem;line-height:1.3;margin-bottom:12px}
 .f-body p{color:var(--muted);margin-bottom:16px}
 .kpis{display:flex;gap:26px;margin:6px 0 18px;flex-wrap:wrap}
@@ -524,6 +526,7 @@ body.detail-open #main,body.detail-open nav{display:none}
   <div class="container d-wrap">
     <div class="d-cat" id="dCat"></div>
     <h1 class="d-title" id="dTitle"></h1>
+    <div class="d-award-wrap"><div class="award" id="dAward" hidden></div></div>
     <div class="d-grid">
       <div class="d-left">
         <div class="d-img" id="dImg"></div>
@@ -565,6 +568,7 @@ const ICO = {
 const projects = [
  {
   "id": "deepp",
+  "award": "🏆 Top 2 Presenter – Final Pitching",
   "featured": true,
   "cat": "Capstone · DEEPP",
   "title": "B2B Sales Pipeline Win-Rate Analysis — The Win-Rate Drop That Never Happened",
@@ -933,6 +937,7 @@ document.getElementById('featured').innerHTML = `
     <a href="#project/${F.id}" data-open="${F.id}" class="p-cover-click">${coverHTML(F,0,true)}</a>
     <div class="f-body">
       <span class="tagline">Featured case study</span>
+      ${F.award?`<div class="award">${F.award}</div>`:''}
       <h3>${F.title.split(' — ')[0]}</h3>
       <p>${F.short}</p>
       <div class="kpis">${F.kpis.map(k=>`<div class="kpi"><div class="v grad-text">${k[0]}</div><div class="k">${k[1]}</div></div>`).join('')}</div>
@@ -957,7 +962,7 @@ let lastScroll = 0;
 function openDetail(id, push){
   const p = projects.find(x=>x.id===id); if(!p) return;
   if(!document.body.classList.contains('detail-open')) lastScroll = window.scrollY;
-  $('dCat').textContent=p.cat; $('dTitle').textContent=p.title;
+  $('dCat').textContent=p.cat; $('dTitle').textContent=p.title; $('dAward').hidden=!p.award; $('dAward').textContent=p.award||'';
   $('dImg').innerHTML=imgOrPlaceholder(p);
   $('dRole').textContent=p.role; $('dResp').innerHTML=list(p.resp); $('dScope').innerHTML=p.scope.map(x=>`<span>${x}</span>`).join(''); $('dPeriod').textContent=p.period; $('dTeam').textContent=p.team; $('dTools').textContent=p.tools;
   $('dDisc').textContent=p.disc||'';
